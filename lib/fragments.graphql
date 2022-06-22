@@ -1,0 +1,18 @@
+fragment PersonSummary on Person {
+    nickname
+    name: full_name
+    dob
+    events
+    eventsOfEvents: events_of_events
+    parents {
+        ...PersonParent
+    }
+    favParent: favorite_parent {
+        ...PersonParent
+    }
+}
+
+
+fragment PersonParent on Person {
+    name: full_name
+}
