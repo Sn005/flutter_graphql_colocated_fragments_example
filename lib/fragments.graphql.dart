@@ -1,71 +1,70 @@
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
-import 'package:graphql_codegen_example/scalars.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'schema.graphql.dart';
 part 'fragments.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Fragment$PersonSummary {
-  Fragment$PersonSummary(
-      {this.nickname,
-      required this.name,
-      this.dob,
-      this.events,
-      this.eventsOfEvents,
-      this.parents,
-      this.favParent,
-      required this.$__typename});
+class Variables$Fragment$MediaList {
+  Variables$Fragment$MediaList({this.season, this.seasonYear});
 
   @override
-  factory Fragment$PersonSummary.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$PersonSummaryFromJson(json);
+  factory Variables$Fragment$MediaList.fromJson(Map<String, dynamic> json) =>
+      _$Variables$Fragment$MediaListFromJson(json);
 
-  final String? nickname;
+  @JsonKey(unknownEnumValue: Enum$MediaSeason.$unknown)
+  final Enum$MediaSeason? season;
 
-  final String name;
+  final int? seasonYear;
 
-  @JsonKey(
-      fromJson: _nullable$dateTimeFromJson, toJson: _nullable$dateTimeToJson)
-  final DateTime? dob;
+  Map<String, dynamic> toJson() => _$Variables$Fragment$MediaListToJson(this);
+  int get hashCode {
+    final l$season = season;
+    final l$seasonYear = seasonYear;
+    return Object.hashAll([l$season, l$seasonYear]);
+  }
 
-  @JsonKey(
-      fromJson: _nullable$_list$_nullable$dateTimeFromJson,
-      toJson: _nullable$_list$_nullable$dateTimeToJson)
-  final List<DateTime?>? events;
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Variables$Fragment$MediaList) ||
+        runtimeType != other.runtimeType) return false;
+    final l$season = season;
+    final lOther$season = other.season;
+    if (l$season != lOther$season) return false;
+    final l$seasonYear = seasonYear;
+    final lOther$seasonYear = other.seasonYear;
+    if (l$seasonYear != lOther$seasonYear) return false;
+    return true;
+  }
 
-  @JsonKey(
-      fromJson: _nullable$_list$_nullable$_list$_nullable$dateTimeFromJson,
-      toJson: _nullable$_list$_nullable$_list$_nullable$dateTimeToJson)
-  final List<List<DateTime?>?>? eventsOfEvents;
+  Variables$Fragment$MediaList copyWith(
+          {Enum$MediaSeason? Function()? season,
+          int? Function()? seasonYear}) =>
+      Variables$Fragment$MediaList(
+          season: season == null ? this.season : season(),
+          seasonYear: seasonYear == null ? this.seasonYear : seasonYear());
+}
 
-  final List<Fragment$PersonSummary$parents>? parents;
+@JsonSerializable(explicitToJson: true)
+class Fragment$MediaList {
+  Fragment$MediaList({this.media, required this.$__typename});
 
-  final Fragment$PersonSummary$favParent? favParent;
+  @override
+  factory Fragment$MediaList.fromJson(Map<String, dynamic> json) =>
+      _$Fragment$MediaListFromJson(json);
+
+  final List<Fragment$MediaList$media?>? media;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Fragment$PersonSummaryToJson(this);
+  Map<String, dynamic> toJson() => _$Fragment$MediaListToJson(this);
   int get hashCode {
-    final l$nickname = nickname;
-    final l$name = name;
-    final l$dob = dob;
-    final l$events = events;
-    final l$eventsOfEvents = eventsOfEvents;
-    final l$parents = parents;
-    final l$favParent = favParent;
+    final l$media = media;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$nickname,
-      l$name,
-      l$dob,
-      l$events == null ? null : Object.hashAll(l$events.map((v) => v)),
-      l$eventsOfEvents == null
-          ? null
-          : Object.hashAll(l$eventsOfEvents
-              .map((v) => v == null ? null : Object.hashAll(v.map((v) => v)))),
-      l$parents == null ? null : Object.hashAll(l$parents.map((v) => v)),
-      l$favParent,
+      l$media == null ? null : Object.hashAll(l$media.map((v) => v)),
       l$$__typename
     ]);
   }
@@ -73,72 +72,21 @@ class Fragment$PersonSummary {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Fragment$PersonSummary) || runtimeType != other.runtimeType)
+    if (!(other is Fragment$MediaList) || runtimeType != other.runtimeType)
       return false;
-    final l$nickname = nickname;
-    final lOther$nickname = other.nickname;
-    if (l$nickname != lOther$nickname) return false;
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
-    final l$dob = dob;
-    final lOther$dob = other.dob;
-    if (l$dob != lOther$dob) return false;
-    final l$events = events;
-    final lOther$events = other.events;
-    if (l$events != null && lOther$events != null) {
-      if (l$events.length != lOther$events.length) return false;
-      for (int i = 0; i < l$events.length; i++) {
-        final l$events$entry = l$events[i];
-        final lOther$events$entry = lOther$events[i];
-        if (l$events$entry != lOther$events$entry) return false;
+    final l$media = media;
+    final lOther$media = other.media;
+    if (l$media != null && lOther$media != null) {
+      if (l$media.length != lOther$media.length) return false;
+      for (int i = 0; i < l$media.length; i++) {
+        final l$media$entry = l$media[i];
+        final lOther$media$entry = lOther$media[i];
+        if (l$media$entry != lOther$media$entry) return false;
       }
-    } else if (l$events != lOther$events) {
+    } else if (l$media != lOther$media) {
       return false;
     }
 
-    final l$eventsOfEvents = eventsOfEvents;
-    final lOther$eventsOfEvents = other.eventsOfEvents;
-    if (l$eventsOfEvents != null && lOther$eventsOfEvents != null) {
-      if (l$eventsOfEvents.length != lOther$eventsOfEvents.length) return false;
-      for (int i = 0; i < l$eventsOfEvents.length; i++) {
-        final l$eventsOfEvents$entry = l$eventsOfEvents[i];
-        final lOther$eventsOfEvents$entry = lOther$eventsOfEvents[i];
-        if (l$eventsOfEvents$entry != null &&
-            lOther$eventsOfEvents$entry != null) {
-          if (l$eventsOfEvents$entry.length !=
-              lOther$eventsOfEvents$entry.length) return false;
-          for (int i = 0; i < l$eventsOfEvents$entry.length; i++) {
-            final l$eventsOfEvents$entry$entry = l$eventsOfEvents$entry[i];
-            final lOther$eventsOfEvents$entry$entry =
-                lOther$eventsOfEvents$entry[i];
-            if (l$eventsOfEvents$entry$entry !=
-                lOther$eventsOfEvents$entry$entry) return false;
-          }
-        } else if (l$eventsOfEvents$entry != lOther$eventsOfEvents$entry) {
-          return false;
-        }
-      }
-    } else if (l$eventsOfEvents != lOther$eventsOfEvents) {
-      return false;
-    }
-
-    final l$parents = parents;
-    final lOther$parents = other.parents;
-    if (l$parents != null && lOther$parents != null) {
-      if (l$parents.length != lOther$parents.length) return false;
-      for (int i = 0; i < l$parents.length; i++) {
-        final l$parents$entry = l$parents[i];
-        final lOther$parents$entry = lOther$parents[i];
-        if (l$parents$entry != lOther$parents$entry) return false;
-      }
-    } else if (l$parents != lOther$parents) {
-      return false;
-    }
-
-    final l$favParent = favParent;
-    final lOther$favParent = other.favParent;
-    if (l$favParent != lOther$favParent) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -146,87 +94,36 @@ class Fragment$PersonSummary {
   }
 }
 
-extension UtilityExtension$Fragment$PersonSummary on Fragment$PersonSummary {
-  Fragment$PersonSummary copyWith(
-          {String? Function()? nickname,
-          String? name,
-          DateTime? Function()? dob,
-          List<DateTime?>? Function()? events,
-          List<List<DateTime?>?>? Function()? eventsOfEvents,
-          List<Fragment$PersonSummary$parents>? Function()? parents,
-          Fragment$PersonSummary$favParent? Function()? favParent,
+extension UtilityExtension$Fragment$MediaList on Fragment$MediaList {
+  Fragment$MediaList copyWith(
+          {List<Fragment$MediaList$media?>? Function()? media,
           String? $__typename}) =>
-      Fragment$PersonSummary(
-          nickname: nickname == null ? this.nickname : nickname(),
-          name: name == null ? this.name : name,
-          dob: dob == null ? this.dob : dob(),
-          events: events == null ? this.events : events(),
-          eventsOfEvents:
-              eventsOfEvents == null ? this.eventsOfEvents : eventsOfEvents(),
-          parents: parents == null ? this.parents : parents(),
-          favParent: favParent == null ? this.favParent : favParent(),
+      Fragment$MediaList(
+          media: media == null ? this.media : media(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
-const fragmentDefinitionPersonSummary = FragmentDefinitionNode(
-    name: NameNode(value: 'PersonSummary'),
+const fragmentDefinitionMediaList = FragmentDefinitionNode(
+    name: NameNode(value: 'MediaList'),
     typeCondition: TypeConditionNode(
-        on: NamedTypeNode(name: NameNode(value: 'Person'), isNonNull: false)),
+        on: NamedTypeNode(name: NameNode(value: 'Page'), isNonNull: false)),
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-          name: NameNode(value: 'nickname'),
+          name: NameNode(value: 'media'),
           alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null),
-      FieldNode(
-          name: NameNode(value: 'full_name'),
-          alias: NameNode(value: 'name'),
-          arguments: [],
-          directives: [],
-          selectionSet: null),
-      FieldNode(
-          name: NameNode(value: 'dob'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null),
-      FieldNode(
-          name: NameNode(value: 'events'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null),
-      FieldNode(
-          name: NameNode(value: 'events_of_events'),
-          alias: NameNode(value: 'eventsOfEvents'),
-          arguments: [],
-          directives: [],
-          selectionSet: null),
-      FieldNode(
-          name: NameNode(value: 'parents'),
-          alias: null,
-          arguments: [],
+          arguments: [
+            ArgumentNode(
+                name: NameNode(value: 'season'),
+                value: VariableNode(name: NameNode(value: 'season'))),
+            ArgumentNode(
+                name: NameNode(value: 'seasonYear'),
+                value: VariableNode(name: NameNode(value: 'seasonYear')))
+          ],
           directives: [],
           selectionSet: SelectionSetNode(selections: [
             FragmentSpreadNode(
-                name: NameNode(value: 'PersonParent'), directives: []),
-            FieldNode(
-                name: NameNode(value: '__typename'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null)
-          ])),
-      FieldNode(
-          name: NameNode(value: 'favorite_parent'),
-          alias: NameNode(value: 'favParent'),
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
-            FragmentSpreadNode(
-                name: NameNode(value: 'PersonParent'), directives: []),
+                name: NameNode(value: 'MediaListItem'), directives: []),
             FieldNode(
                 name: NameNode(value: '__typename'),
                 alias: null,
@@ -241,66 +138,77 @@ const fragmentDefinitionPersonSummary = FragmentDefinitionNode(
           directives: [],
           selectionSet: null)
     ]));
-const documentNodeFragmentPersonSummary = DocumentNode(definitions: [
-  fragmentDefinitionPersonSummary,
-  fragmentDefinitionPersonParent,
+const documentNodeFragmentMediaList = DocumentNode(definitions: [
+  fragmentDefinitionMediaList,
+  fragmentDefinitionMediaListItem,
 ]);
 
-extension ClientExtension$Fragment$PersonSummary on graphql.GraphQLClient {
-  void writeFragment$PersonSummary(
-          {required Fragment$PersonSummary data,
+extension ClientExtension$Fragment$MediaList on graphql.GraphQLClient {
+  void writeFragment$MediaList(
+          {required Fragment$MediaList data,
           required Map<String, dynamic> idFields,
+          Variables$Fragment$MediaList? variables,
           bool broadcast = true}) =>
       this.writeFragment(
           graphql.FragmentRequest(
               idFields: idFields,
               fragment: const graphql.Fragment(
-                  fragmentName: 'PersonSummary',
-                  document: documentNodeFragmentPersonSummary)),
+                  fragmentName: 'MediaList',
+                  document: documentNodeFragmentMediaList),
+              variables: variables?.toJson() ?? const {}),
           data: data.toJson(),
           broadcast: broadcast);
-  Fragment$PersonSummary? readFragment$PersonSummary(
-      {required Map<String, dynamic> idFields, bool optimistic = true}) {
+  Fragment$MediaList? readFragment$MediaList(
+      {required Map<String, dynamic> idFields,
+      Variables$Fragment$MediaList? variables,
+      bool optimistic = true}) {
     final result = this.readFragment(
         graphql.FragmentRequest(
             idFields: idFields,
             fragment: const graphql.Fragment(
-                fragmentName: 'PersonSummary',
-                document: documentNodeFragmentPersonSummary)),
+                fragmentName: 'MediaList',
+                document: documentNodeFragmentMediaList),
+            variables: variables?.toJson() ?? const {}),
         optimistic: optimistic);
-    return result == null ? null : Fragment$PersonSummary.fromJson(result);
+    return result == null ? null : Fragment$MediaList.fromJson(result);
   }
 }
 
 @JsonSerializable(explicitToJson: true)
-class Fragment$PersonSummary$parents implements Fragment$PersonParent {
-  Fragment$PersonSummary$parents(
-      {required this.name, required this.$__typename});
+class Fragment$MediaList$media implements Fragment$MediaListItem {
+  Fragment$MediaList$media(
+      {this.title, this.coverImage, required this.$__typename});
 
   @override
-  factory Fragment$PersonSummary$parents.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$PersonSummary$parentsFromJson(json);
+  factory Fragment$MediaList$media.fromJson(Map<String, dynamic> json) =>
+      _$Fragment$MediaList$mediaFromJson(json);
 
-  final String name;
+  final Fragment$MediaList$media$title? title;
+
+  final Fragment$MediaList$media$coverImage? coverImage;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Fragment$PersonSummary$parentsToJson(this);
+  Map<String, dynamic> toJson() => _$Fragment$MediaList$mediaToJson(this);
   int get hashCode {
-    final l$name = name;
+    final l$title = title;
+    final l$coverImage = coverImage;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$name, l$$__typename]);
+    return Object.hashAll([l$title, l$coverImage, l$$__typename]);
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Fragment$PersonSummary$parents) ||
+    if (!(other is Fragment$MediaList$media) ||
         runtimeType != other.runtimeType) return false;
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) return false;
+    final l$coverImage = coverImage;
+    final lOther$coverImage = other.coverImage;
+    if (l$coverImage != lOther$coverImage) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -308,46 +216,94 @@ class Fragment$PersonSummary$parents implements Fragment$PersonParent {
   }
 }
 
-extension UtilityExtension$Fragment$PersonSummary$parents
-    on Fragment$PersonSummary$parents {
-  Fragment$PersonSummary$parents copyWith(
-          {String? name, String? $__typename}) =>
-      Fragment$PersonSummary$parents(
-          name: name == null ? this.name : name,
+extension UtilityExtension$Fragment$MediaList$media
+    on Fragment$MediaList$media {
+  Fragment$MediaList$media copyWith(
+          {Fragment$MediaList$media$title? Function()? title,
+          Fragment$MediaList$media$coverImage? Function()? coverImage,
+          String? $__typename}) =>
+      Fragment$MediaList$media(
+          title: title == null ? this.title : title(),
+          coverImage: coverImage == null ? this.coverImage : coverImage(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Fragment$PersonSummary$favParent implements Fragment$PersonParent {
-  Fragment$PersonSummary$favParent(
-      {required this.name, required this.$__typename});
+class Fragment$MediaList$media$title implements Fragment$MediaListItem$title {
+  Fragment$MediaList$media$title({this.native, required this.$__typename});
 
   @override
-  factory Fragment$PersonSummary$favParent.fromJson(
-          Map<String, dynamic> json) =>
-      _$Fragment$PersonSummary$favParentFromJson(json);
+  factory Fragment$MediaList$media$title.fromJson(Map<String, dynamic> json) =>
+      _$Fragment$MediaList$media$titleFromJson(json);
 
-  final String name;
+  final String? native;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Fragment$MediaList$media$titleToJson(this);
+  int get hashCode {
+    final l$native = native;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$native, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Fragment$MediaList$media$title) ||
+        runtimeType != other.runtimeType) return false;
+    final l$native = native;
+    final lOther$native = other.native;
+    if (l$native != lOther$native) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$MediaList$media$title
+    on Fragment$MediaList$media$title {
+  Fragment$MediaList$media$title copyWith(
+          {String? Function()? native, String? $__typename}) =>
+      Fragment$MediaList$media$title(
+          native: native == null ? this.native : native(),
+          $__typename: $__typename == null ? this.$__typename : $__typename);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Fragment$MediaList$media$coverImage
+    implements Fragment$MediaListItem$coverImage {
+  Fragment$MediaList$media$coverImage(
+      {this.extraLarge, required this.$__typename});
+
+  @override
+  factory Fragment$MediaList$media$coverImage.fromJson(
+          Map<String, dynamic> json) =>
+      _$Fragment$MediaList$media$coverImageFromJson(json);
+
+  final String? extraLarge;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
   Map<String, dynamic> toJson() =>
-      _$Fragment$PersonSummary$favParentToJson(this);
+      _$Fragment$MediaList$media$coverImageToJson(this);
   int get hashCode {
-    final l$name = name;
+    final l$extraLarge = extraLarge;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$name, l$$__typename]);
+    return Object.hashAll([l$extraLarge, l$$__typename]);
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Fragment$PersonSummary$favParent) ||
+    if (!(other is Fragment$MediaList$media$coverImage) ||
         runtimeType != other.runtimeType) return false;
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
+    final l$extraLarge = extraLarge;
+    final lOther$extraLarge = other.extraLarge;
+    if (l$extraLarge != lOther$extraLarge) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -355,43 +311,50 @@ class Fragment$PersonSummary$favParent implements Fragment$PersonParent {
   }
 }
 
-extension UtilityExtension$Fragment$PersonSummary$favParent
-    on Fragment$PersonSummary$favParent {
-  Fragment$PersonSummary$favParent copyWith(
-          {String? name, String? $__typename}) =>
-      Fragment$PersonSummary$favParent(
-          name: name == null ? this.name : name,
+extension UtilityExtension$Fragment$MediaList$media$coverImage
+    on Fragment$MediaList$media$coverImage {
+  Fragment$MediaList$media$coverImage copyWith(
+          {String? Function()? extraLarge, String? $__typename}) =>
+      Fragment$MediaList$media$coverImage(
+          extraLarge: extraLarge == null ? this.extraLarge : extraLarge(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Fragment$PersonParent {
-  Fragment$PersonParent({required this.name, required this.$__typename});
+class Fragment$MediaListItem {
+  Fragment$MediaListItem(
+      {this.title, this.coverImage, required this.$__typename});
 
   @override
-  factory Fragment$PersonParent.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$PersonParentFromJson(json);
+  factory Fragment$MediaListItem.fromJson(Map<String, dynamic> json) =>
+      _$Fragment$MediaListItemFromJson(json);
 
-  final String name;
+  final Fragment$MediaListItem$title? title;
+
+  final Fragment$MediaListItem$coverImage? coverImage;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Fragment$PersonParentToJson(this);
+  Map<String, dynamic> toJson() => _$Fragment$MediaListItemToJson(this);
   int get hashCode {
-    final l$name = name;
+    final l$title = title;
+    final l$coverImage = coverImage;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$name, l$$__typename]);
+    return Object.hashAll([l$title, l$coverImage, l$$__typename]);
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Fragment$PersonParent) || runtimeType != other.runtimeType)
+    if (!(other is Fragment$MediaListItem) || runtimeType != other.runtimeType)
       return false;
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) return false;
+    final l$coverImage = coverImage;
+    final lOther$coverImage = other.coverImage;
+    if (l$coverImage != lOther$coverImage) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -399,25 +362,61 @@ class Fragment$PersonParent {
   }
 }
 
-extension UtilityExtension$Fragment$PersonParent on Fragment$PersonParent {
-  Fragment$PersonParent copyWith({String? name, String? $__typename}) =>
-      Fragment$PersonParent(
-          name: name == null ? this.name : name,
+extension UtilityExtension$Fragment$MediaListItem on Fragment$MediaListItem {
+  Fragment$MediaListItem copyWith(
+          {Fragment$MediaListItem$title? Function()? title,
+          Fragment$MediaListItem$coverImage? Function()? coverImage,
+          String? $__typename}) =>
+      Fragment$MediaListItem(
+          title: title == null ? this.title : title(),
+          coverImage: coverImage == null ? this.coverImage : coverImage(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
-const fragmentDefinitionPersonParent = FragmentDefinitionNode(
-    name: NameNode(value: 'PersonParent'),
+const fragmentDefinitionMediaListItem = FragmentDefinitionNode(
+    name: NameNode(value: 'MediaListItem'),
     typeCondition: TypeConditionNode(
-        on: NamedTypeNode(name: NameNode(value: 'Person'), isNonNull: false)),
+        on: NamedTypeNode(name: NameNode(value: 'Media'), isNonNull: false)),
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-          name: NameNode(value: 'full_name'),
-          alias: NameNode(value: 'name'),
+          name: NameNode(value: 'title'),
+          alias: null,
           arguments: [],
           directives: [],
-          selectionSet: null),
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+                name: NameNode(value: 'native'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
+          ])),
+      FieldNode(
+          name: NameNode(value: 'coverImage'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+                name: NameNode(value: 'extraLarge'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
+          ])),
       FieldNode(
           name: NameNode(value: '__typename'),
           alias: null,
@@ -425,61 +424,123 @@ const fragmentDefinitionPersonParent = FragmentDefinitionNode(
           directives: [],
           selectionSet: null)
     ]));
-const documentNodeFragmentPersonParent = DocumentNode(definitions: [
-  fragmentDefinitionPersonParent,
+const documentNodeFragmentMediaListItem = DocumentNode(definitions: [
+  fragmentDefinitionMediaListItem,
 ]);
 
-extension ClientExtension$Fragment$PersonParent on graphql.GraphQLClient {
-  void writeFragment$PersonParent(
-          {required Fragment$PersonParent data,
+extension ClientExtension$Fragment$MediaListItem on graphql.GraphQLClient {
+  void writeFragment$MediaListItem(
+          {required Fragment$MediaListItem data,
           required Map<String, dynamic> idFields,
           bool broadcast = true}) =>
       this.writeFragment(
           graphql.FragmentRequest(
               idFields: idFields,
               fragment: const graphql.Fragment(
-                  fragmentName: 'PersonParent',
-                  document: documentNodeFragmentPersonParent)),
+                  fragmentName: 'MediaListItem',
+                  document: documentNodeFragmentMediaListItem)),
           data: data.toJson(),
           broadcast: broadcast);
-  Fragment$PersonParent? readFragment$PersonParent(
+  Fragment$MediaListItem? readFragment$MediaListItem(
       {required Map<String, dynamic> idFields, bool optimistic = true}) {
     final result = this.readFragment(
         graphql.FragmentRequest(
             idFields: idFields,
             fragment: const graphql.Fragment(
-                fragmentName: 'PersonParent',
-                document: documentNodeFragmentPersonParent)),
+                fragmentName: 'MediaListItem',
+                document: documentNodeFragmentMediaListItem)),
         optimistic: optimistic);
-    return result == null ? null : Fragment$PersonParent.fromJson(result);
+    return result == null ? null : Fragment$MediaListItem.fromJson(result);
   }
 }
 
-DateTime? _nullable$dateTimeFromJson(dynamic data) =>
-    data == null ? null : dateTimeFromJson(data);
-dynamic _nullable$dateTimeToJson(DateTime? data) =>
-    data == null ? null : dateTimeToJson(data);
-List<DateTime?> _list$_nullable$dateTimeFromJson(dynamic data) =>
-    data is List ? data.map(_nullable$dateTimeFromJson).toList() : [];
-dynamic _list$_nullable$dateTimeToJson(List<DateTime?> data) =>
-    data.map(_nullable$dateTimeToJson).toList();
-List<DateTime?>? _nullable$_list$_nullable$dateTimeFromJson(dynamic data) =>
-    data == null ? null : _list$_nullable$dateTimeFromJson(data);
-dynamic _nullable$_list$_nullable$dateTimeToJson(List<DateTime?>? data) =>
-    data == null ? null : _list$_nullable$dateTimeToJson(data);
-List<List<DateTime?>?> _list$_nullable$_list$_nullable$dateTimeFromJson(
-        dynamic data) =>
-    data is List
-        ? data.map(_nullable$_list$_nullable$dateTimeFromJson).toList()
-        : [];
-dynamic _list$_nullable$_list$_nullable$dateTimeToJson(
-        List<List<DateTime?>?> data) =>
-    data.map(_nullable$_list$_nullable$dateTimeToJson).toList();
-List<List<DateTime?>?>?
-    _nullable$_list$_nullable$_list$_nullable$dateTimeFromJson(dynamic data) =>
-        data == null
-            ? null
-            : _list$_nullable$_list$_nullable$dateTimeFromJson(data);
-dynamic _nullable$_list$_nullable$_list$_nullable$dateTimeToJson(
-        List<List<DateTime?>?>? data) =>
-    data == null ? null : _list$_nullable$_list$_nullable$dateTimeToJson(data);
+@JsonSerializable(explicitToJson: true)
+class Fragment$MediaListItem$title {
+  Fragment$MediaListItem$title({this.native, required this.$__typename});
+
+  @override
+  factory Fragment$MediaListItem$title.fromJson(Map<String, dynamic> json) =>
+      _$Fragment$MediaListItem$titleFromJson(json);
+
+  final String? native;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Fragment$MediaListItem$titleToJson(this);
+  int get hashCode {
+    final l$native = native;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$native, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Fragment$MediaListItem$title) ||
+        runtimeType != other.runtimeType) return false;
+    final l$native = native;
+    final lOther$native = other.native;
+    if (l$native != lOther$native) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$MediaListItem$title
+    on Fragment$MediaListItem$title {
+  Fragment$MediaListItem$title copyWith(
+          {String? Function()? native, String? $__typename}) =>
+      Fragment$MediaListItem$title(
+          native: native == null ? this.native : native(),
+          $__typename: $__typename == null ? this.$__typename : $__typename);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Fragment$MediaListItem$coverImage {
+  Fragment$MediaListItem$coverImage(
+      {this.extraLarge, required this.$__typename});
+
+  @override
+  factory Fragment$MediaListItem$coverImage.fromJson(
+          Map<String, dynamic> json) =>
+      _$Fragment$MediaListItem$coverImageFromJson(json);
+
+  final String? extraLarge;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Fragment$MediaListItem$coverImageToJson(this);
+  int get hashCode {
+    final l$extraLarge = extraLarge;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$extraLarge, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Fragment$MediaListItem$coverImage) ||
+        runtimeType != other.runtimeType) return false;
+    final l$extraLarge = extraLarge;
+    final lOther$extraLarge = other.extraLarge;
+    if (l$extraLarge != lOther$extraLarge) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$MediaListItem$coverImage
+    on Fragment$MediaListItem$coverImage {
+  Fragment$MediaListItem$coverImage copyWith(
+          {String? Function()? extraLarge, String? $__typename}) =>
+      Fragment$MediaListItem$coverImage(
+          extraLarge: extraLarge == null ? this.extraLarge : extraLarge(),
+          $__typename: $__typename == null ? this.$__typename : $__typename);
+}

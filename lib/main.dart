@@ -4,18 +4,16 @@ import 'main.graphql.dart';
 
 void main() async {
   final client = GraphQLClient(
-    link: HttpLink("https://example.com"),
+    link: HttpLink("https://graphql.anilist.co/"),
     cache: GraphQLCache(store: InMemoryStore()),
   );
-  final result = await client.query$FetchPerson(
-    Options$Query$FetchPerson(
-      variables: Variables$Query$FetchPerson(
-        id: "id1",
-      ),
+  final result = await client.query$HomePage(
+    Options$Query$HomePage(
+      variables: Variables$Query$HomePage(seasonYear: 2019),
     ),
   );
-  final parased = result.parsedData;
-  print(parased?.fetchPerson?.name);
+  final parsedData = result.parsedData;
+  print(parsedData);
 }
 // import 'package:flutter/material.dart';
 // import 'package:graphql_flutter/graphql_flutter.dart';

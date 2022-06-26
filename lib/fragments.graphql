@@ -1,18 +1,14 @@
-fragment PersonSummary on Person {
-    nickname
-    name: full_name
-    dob
-    events
-    eventsOfEvents: events_of_events
-    parents {
-        ...PersonParent
-    }
-    favParent: favorite_parent {
-        ...PersonParent
-    }
+fragment MediaList on Page {
+  media(season: $season, seasonYear: $seasonYear) {
+    ...MediaListItem
+  }
 }
 
-
-fragment PersonParent on Person {
-    name: full_name
+fragment MediaListItem on Media {
+  title {
+    native
+  }
+  coverImage {
+    extraLarge
+  }
 }

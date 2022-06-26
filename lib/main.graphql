@@ -1,23 +1,6 @@
-query FetchPerson ($id: ID!) {
-    fetchPerson: fetch_person(id: $id) {
-        ...PersonSummary
-        parents {
-            ...PersonSummary
-        }
-        children {
-            ...PersonSummary
-        }
-    }
-}
-
-mutation UpdatePerson($id: ID!) {
-    updatePerson: update_person(id: $id) {
-        full_name
-    }
-}
-
-subscription WatchPerson($id: ID) {
-    watchPerson: watch_person(id: $id) {
-        full_name
-    }
+query HomePage($season: MediaSeason, $seasonYear: Int) {
+  Page {
+    # ...SeasonSelectors
+    ...MediaList
+  }
 }
