@@ -1,4 +1,4 @@
-import 'fragments.graphql.dart';
+import 'media_list.graphql.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
