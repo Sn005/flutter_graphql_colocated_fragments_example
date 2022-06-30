@@ -5,6 +5,7 @@ import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
 import 'package:json_annotation/json_annotation.dart';
 import 'schema.graphql.dart';
+import 'season_selectors/season_selectors.graphql.dart';
 part 'main.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -118,6 +119,8 @@ const documentNodeQueryHomePage = DocumentNode(definitions: [
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FragmentSpreadNode(
+                  name: NameNode(value: 'SeasonSelectors'), directives: []),
+              FragmentSpreadNode(
                   name: NameNode(value: 'MediaList'), directives: []),
               FieldNode(
                   name: NameNode(value: '__typename'),
@@ -133,6 +136,7 @@ const documentNodeQueryHomePage = DocumentNode(definitions: [
             directives: [],
             selectionSet: null)
       ])),
+  fragmentDefinitionSeasonSelectors,
   fragmentDefinitionMediaList,
   fragmentDefinitionMediaListItem,
 ]);
@@ -249,7 +253,8 @@ class Query$HomePage$Widget extends graphql_flutter.Query<Query$HomePage> {
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$HomePage$Page implements Fragment$MediaList {
+class Query$HomePage$Page
+    implements Fragment$SeasonSelectors, Fragment$MediaList {
   Query$HomePage$Page({this.media, required this.$__typename});
 
   @override
@@ -307,27 +312,42 @@ extension UtilityExtension$Query$HomePage$Page on Query$HomePage$Page {
 
 @JsonSerializable(explicitToJson: true)
 class Query$HomePage$Page$media
-    implements Fragment$MediaList$media, Fragment$MediaListItem {
+    implements
+        Fragment$SeasonSelectors$media,
+        Fragment$MediaList$media,
+        Fragment$MediaListItem {
   Query$HomePage$Page$media(
-      {this.title, this.coverImage, required this.$__typename});
+      {this.season,
+      this.seasonYear,
+      required this.$__typename,
+      this.title,
+      this.coverImage});
 
   @override
   factory Query$HomePage$Page$media.fromJson(Map<String, dynamic> json) =>
       _$Query$HomePage$Page$mediaFromJson(json);
 
-  final Query$HomePage$Page$media$title? title;
+  @JsonKey(unknownEnumValue: Enum$MediaSeason.$unknown)
+  final Enum$MediaSeason? season;
 
-  final Query$HomePage$Page$media$coverImage? coverImage;
+  final int? seasonYear;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
+  final Query$HomePage$Page$media$title? title;
+
+  final Query$HomePage$Page$media$coverImage? coverImage;
+
   Map<String, dynamic> toJson() => _$Query$HomePage$Page$mediaToJson(this);
   int get hashCode {
+    final l$season = season;
+    final l$seasonYear = seasonYear;
+    final l$$__typename = $__typename;
     final l$title = title;
     final l$coverImage = coverImage;
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$title, l$coverImage, l$$__typename]);
+    return Object.hashAll(
+        [l$season, l$seasonYear, l$$__typename, l$title, l$coverImage]);
   }
 
   @override
@@ -335,15 +355,21 @@ class Query$HomePage$Page$media
     if (identical(this, other)) return true;
     if (!(other is Query$HomePage$Page$media) ||
         runtimeType != other.runtimeType) return false;
+    final l$season = season;
+    final lOther$season = other.season;
+    if (l$season != lOther$season) return false;
+    final l$seasonYear = seasonYear;
+    final lOther$seasonYear = other.seasonYear;
+    if (l$seasonYear != lOther$seasonYear) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
     final l$coverImage = coverImage;
     final lOther$coverImage = other.coverImage;
     if (l$coverImage != lOther$coverImage) return false;
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
     return true;
   }
 }
@@ -351,13 +377,17 @@ class Query$HomePage$Page$media
 extension UtilityExtension$Query$HomePage$Page$media
     on Query$HomePage$Page$media {
   Query$HomePage$Page$media copyWith(
-          {Query$HomePage$Page$media$title? Function()? title,
-          Query$HomePage$Page$media$coverImage? Function()? coverImage,
-          String? $__typename}) =>
+          {Enum$MediaSeason? Function()? season,
+          int? Function()? seasonYear,
+          String? $__typename,
+          Query$HomePage$Page$media$title? Function()? title,
+          Query$HomePage$Page$media$coverImage? Function()? coverImage}) =>
       Query$HomePage$Page$media(
+          season: season == null ? this.season : season(),
+          seasonYear: seasonYear == null ? this.seasonYear : seasonYear(),
+          $__typename: $__typename == null ? this.$__typename : $__typename,
           title: title == null ? this.title : title(),
-          coverImage: coverImage == null ? this.coverImage : coverImage(),
-          $__typename: $__typename == null ? this.$__typename : $__typename);
+          coverImage: coverImage == null ? this.coverImage : coverImage());
 }
 
 @JsonSerializable(explicitToJson: true)

@@ -1,0 +1,6 @@
+fragment SeasonSelectors on Page {
+  media(season: $season, seasonYear: $seasonYear) {
+    season
+    seasonYear
+  }
+}
