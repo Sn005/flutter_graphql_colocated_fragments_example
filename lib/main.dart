@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import "package:hello_flutter_graphql/media_list.dart";
+import 'package:hello_flutter_graphql/season_selectors/season_selectors.dart';
+
 import 'main.graphql.dart';
 import 'media_list.graphql.dart';
 
@@ -42,10 +44,11 @@ class MyHomePage extends HookWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    final queryResult = useQuery$HomePage(
-      Options$Query$HomePage(
-          variables: Variables$Query$HomePage(seasonYear: 2019)),
+    final queryVariables = useState<Variables$Query$HomePage>(
+      Variables$Query$HomePage(seasonYear: DateTime.now().year),
     );
+    final queryResult = useQuery$HomePage(
+        Options$Query$HomePage(variables: queryVariables.value));
     final result = queryResult.result;
 
     if (result.hasException) {
@@ -62,10 +65,15 @@ class MyHomePage extends HookWidget {
         title: const Text("title"),
       ),
       body: Center(
-        child: MediaList(
-            data: Fragment$MediaList(
-                media: page?.media, $__typename: page!.$__typename)),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SeasonSelectors(variables: queryVariables.value),
+          MediaList(
+              data: Fragment$MediaList(
+                  media: page?.media, $__typename: page!.$__typename)),
+        ],
+      )),
     );
   }
 }
