@@ -1,6 +1,0 @@
-query HomePage($season: MediaSeason, $seasonYear: Int) {
-  Page {
-    ...SeasonSelectors
-    ...MediaList
-  }
-}

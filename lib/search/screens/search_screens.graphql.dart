@@ -1,27 +1,27 @@
-import 'media_list.graphql.dart';
+import '../../schema.graphql.dart';
+import '../../season_selectors/season_selectors.graphql.dart';
+import '../widgets/media_list/media_list.graphql.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
 import 'package:json_annotation/json_annotation.dart';
-import 'schema.graphql.dart';
-import 'season_selectors/season_selectors.graphql.dart';
-part 'main.graphql.g.dart';
+part 'search_screens.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Variables$Query$HomePage {
-  Variables$Query$HomePage({this.season, this.seasonYear});
+class Variables$Query$SearchScreens {
+  Variables$Query$SearchScreens({this.season, this.seasonYear});
 
   @override
-  factory Variables$Query$HomePage.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Query$HomePageFromJson(json);
+  factory Variables$Query$SearchScreens.fromJson(Map<String, dynamic> json) =>
+      _$Variables$Query$SearchScreensFromJson(json);
 
   @JsonKey(unknownEnumValue: Enum$MediaSeason.$unknown)
   final Enum$MediaSeason? season;
 
   final int? seasonYear;
 
-  Map<String, dynamic> toJson() => _$Variables$Query$HomePageToJson(this);
+  Map<String, dynamic> toJson() => _$Variables$Query$SearchScreensToJson(this);
   int get hashCode {
     final l$season = season;
     final l$seasonYear = seasonYear;
@@ -31,7 +31,7 @@ class Variables$Query$HomePage {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Variables$Query$HomePage) ||
+    if (!(other is Variables$Query$SearchScreens) ||
         runtimeType != other.runtimeType) return false;
     final l$season = season;
     final lOther$season = other.season;
@@ -42,28 +42,28 @@ class Variables$Query$HomePage {
     return true;
   }
 
-  Variables$Query$HomePage copyWith(
+  Variables$Query$SearchScreens copyWith(
           {Enum$MediaSeason? Function()? season,
           int? Function()? seasonYear}) =>
-      Variables$Query$HomePage(
+      Variables$Query$SearchScreens(
           season: season == null ? this.season : season(),
           seasonYear: seasonYear == null ? this.seasonYear : seasonYear());
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$HomePage {
-  Query$HomePage({this.Page, required this.$__typename});
+class Query$SearchScreens {
+  Query$SearchScreens({this.Page, required this.$__typename});
 
   @override
-  factory Query$HomePage.fromJson(Map<String, dynamic> json) =>
-      _$Query$HomePageFromJson(json);
+  factory Query$SearchScreens.fromJson(Map<String, dynamic> json) =>
+      _$Query$SearchScreensFromJson(json);
 
-  final Query$HomePage$Page? Page;
+  final Query$SearchScreens$Page? Page;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$HomePageToJson(this);
+  Map<String, dynamic> toJson() => _$Query$SearchScreensToJson(this);
   int get hashCode {
     final l$Page = Page;
     final l$$__typename = $__typename;
@@ -73,7 +73,7 @@ class Query$HomePage {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$HomePage) || runtimeType != other.runtimeType)
+    if (!(other is Query$SearchScreens) || runtimeType != other.runtimeType)
       return false;
     final l$Page = Page;
     final lOther$Page = other.Page;
@@ -85,18 +85,18 @@ class Query$HomePage {
   }
 }
 
-extension UtilityExtension$Query$HomePage on Query$HomePage {
-  Query$HomePage copyWith(
-          {Query$HomePage$Page? Function()? Page, String? $__typename}) =>
-      Query$HomePage(
+extension UtilityExtension$Query$SearchScreens on Query$SearchScreens {
+  Query$SearchScreens copyWith(
+          {Query$SearchScreens$Page? Function()? Page, String? $__typename}) =>
+      Query$SearchScreens(
           Page: Page == null ? this.Page : Page(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
-const documentNodeQueryHomePage = DocumentNode(definitions: [
+const documentNodeQuerySearchScreens = DocumentNode(definitions: [
   OperationDefinitionNode(
       type: OperationType.query,
-      name: NameNode(value: 'HomePage'),
+      name: NameNode(value: 'SearchScreens'),
       variableDefinitions: [
         VariableDefinitionNode(
             variable: VariableNode(name: NameNode(value: 'season')),
@@ -140,13 +140,14 @@ const documentNodeQueryHomePage = DocumentNode(definitions: [
   fragmentDefinitionMediaList,
   fragmentDefinitionMediaListItem,
 ]);
-Query$HomePage _parserFn$Query$HomePage(Map<String, dynamic> data) =>
-    Query$HomePage.fromJson(data);
+Query$SearchScreens _parserFn$Query$SearchScreens(Map<String, dynamic> data) =>
+    Query$SearchScreens.fromJson(data);
 
-class Options$Query$HomePage extends graphql.QueryOptions<Query$HomePage> {
-  Options$Query$HomePage(
+class Options$Query$SearchScreens
+    extends graphql.QueryOptions<Query$SearchScreens> {
+  Options$Query$SearchScreens(
       {String? operationName,
-      Variables$Query$HomePage? variables,
+      Variables$Query$SearchScreens? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -162,15 +163,15 @@ class Options$Query$HomePage extends graphql.QueryOptions<Query$HomePage> {
             optimisticResult: optimisticResult,
             pollInterval: pollInterval,
             context: context,
-            document: documentNodeQueryHomePage,
-            parserFn: _parserFn$Query$HomePage);
+            document: documentNodeQuerySearchScreens,
+            parserFn: _parserFn$Query$SearchScreens);
 }
 
-class WatchOptions$Query$HomePage
-    extends graphql.WatchQueryOptions<Query$HomePage> {
-  WatchOptions$Query$HomePage(
+class WatchOptions$Query$SearchScreens
+    extends graphql.WatchQueryOptions<Query$SearchScreens> {
+  WatchOptions$Query$SearchScreens(
       {String? operationName,
-      Variables$Query$HomePage? variables,
+      Variables$Query$SearchScreens? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -188,85 +189,89 @@ class WatchOptions$Query$HomePage
             cacheRereadPolicy: cacheRereadPolicy,
             optimisticResult: optimisticResult,
             context: context,
-            document: documentNodeQueryHomePage,
+            document: documentNodeQuerySearchScreens,
             pollInterval: pollInterval,
             eagerlyFetchResults: eagerlyFetchResults,
             carryForwardDataOnException: carryForwardDataOnException,
             fetchResults: fetchResults,
-            parserFn: _parserFn$Query$HomePage);
+            parserFn: _parserFn$Query$SearchScreens);
 }
 
-class FetchMoreOptions$Query$HomePage extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$HomePage(
+class FetchMoreOptions$Query$SearchScreens extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$SearchScreens(
       {required graphql.UpdateQuery updateQuery,
-      Variables$Query$HomePage? variables})
+      Variables$Query$SearchScreens? variables})
       : super(
             updateQuery: updateQuery,
             variables: variables?.toJson() ?? {},
-            document: documentNodeQueryHomePage);
+            document: documentNodeQuerySearchScreens);
 }
 
-extension ClientExtension$Query$HomePage on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$HomePage>> query$HomePage(
-          [Options$Query$HomePage? options]) async =>
-      await this.query(options ?? Options$Query$HomePage());
-  graphql.ObservableQuery<Query$HomePage> watchQuery$HomePage(
-          [WatchOptions$Query$HomePage? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$HomePage());
-  void writeQuery$HomePage(
-          {required Query$HomePage data,
-          Variables$Query$HomePage? variables,
+extension ClientExtension$Query$SearchScreens on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$SearchScreens>> query$SearchScreens(
+          [Options$Query$SearchScreens? options]) async =>
+      await this.query(options ?? Options$Query$SearchScreens());
+  graphql.ObservableQuery<Query$SearchScreens> watchQuery$SearchScreens(
+          [WatchOptions$Query$SearchScreens? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$SearchScreens());
+  void writeQuery$SearchScreens(
+          {required Query$SearchScreens data,
+          Variables$Query$SearchScreens? variables,
           bool broadcast = true}) =>
       this.writeQuery(
           graphql.Request(
-              operation: graphql.Operation(document: documentNodeQueryHomePage),
+              operation:
+                  graphql.Operation(document: documentNodeQuerySearchScreens),
               variables: variables?.toJson() ?? const {}),
           data: data.toJson(),
           broadcast: broadcast);
-  Query$HomePage? readQuery$HomePage(
-      {Variables$Query$HomePage? variables, bool optimistic = true}) {
+  Query$SearchScreens? readQuery$SearchScreens(
+      {Variables$Query$SearchScreens? variables, bool optimistic = true}) {
     final result = this.readQuery(
         graphql.Request(
-            operation: graphql.Operation(document: documentNodeQueryHomePage),
+            operation:
+                graphql.Operation(document: documentNodeQuerySearchScreens),
             variables: variables?.toJson() ?? const {}),
         optimistic: optimistic);
-    return result == null ? null : Query$HomePage.fromJson(result);
+    return result == null ? null : Query$SearchScreens.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$HomePage> useQuery$HomePage(
-        [Options$Query$HomePage? options]) =>
-    graphql_flutter.useQuery(options ?? Options$Query$HomePage());
-graphql.ObservableQuery<Query$HomePage> useWatchQuery$HomePage(
-        [WatchOptions$Query$HomePage? options]) =>
-    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$HomePage());
+graphql_flutter.QueryHookResult<Query$SearchScreens> useQuery$SearchScreens(
+        [Options$Query$SearchScreens? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$SearchScreens());
+graphql.ObservableQuery<Query$SearchScreens> useWatchQuery$SearchScreens(
+        [WatchOptions$Query$SearchScreens? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$SearchScreens());
 
-class Query$HomePage$Widget extends graphql_flutter.Query<Query$HomePage> {
-  Query$HomePage$Widget(
+class Query$SearchScreens$Widget
+    extends graphql_flutter.Query<Query$SearchScreens> {
+  Query$SearchScreens$Widget(
       {widgets.Key? key,
-      Options$Query$HomePage? options,
-      required graphql_flutter.QueryBuilder<Query$HomePage> builder})
+      Options$Query$SearchScreens? options,
+      required graphql_flutter.QueryBuilder<Query$SearchScreens> builder})
       : super(
             key: key,
-            options: options ?? Options$Query$HomePage(),
+            options: options ?? Options$Query$SearchScreens(),
             builder: builder);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$HomePage$Page
+class Query$SearchScreens$Page
     implements Fragment$SeasonSelectors, Fragment$MediaList {
-  Query$HomePage$Page({this.media, required this.$__typename});
+  Query$SearchScreens$Page({this.media, required this.$__typename});
 
   @override
-  factory Query$HomePage$Page.fromJson(Map<String, dynamic> json) =>
-      _$Query$HomePage$PageFromJson(json);
+  factory Query$SearchScreens$Page.fromJson(Map<String, dynamic> json) =>
+      _$Query$SearchScreens$PageFromJson(json);
 
-  final List<Query$HomePage$Page$media?>? media;
+  final List<Query$SearchScreens$Page$media?>? media;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$HomePage$PageToJson(this);
+  Map<String, dynamic> toJson() => _$Query$SearchScreens$PageToJson(this);
   int get hashCode {
     final l$media = media;
     final l$$__typename = $__typename;
@@ -279,8 +284,8 @@ class Query$HomePage$Page
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$HomePage$Page) || runtimeType != other.runtimeType)
-      return false;
+    if (!(other is Query$SearchScreens$Page) ||
+        runtimeType != other.runtimeType) return false;
     final l$media = media;
     final lOther$media = other.media;
     if (l$media != null && lOther$media != null) {
@@ -301,22 +306,23 @@ class Query$HomePage$Page
   }
 }
 
-extension UtilityExtension$Query$HomePage$Page on Query$HomePage$Page {
-  Query$HomePage$Page copyWith(
-          {List<Query$HomePage$Page$media?>? Function()? media,
+extension UtilityExtension$Query$SearchScreens$Page
+    on Query$SearchScreens$Page {
+  Query$SearchScreens$Page copyWith(
+          {List<Query$SearchScreens$Page$media?>? Function()? media,
           String? $__typename}) =>
-      Query$HomePage$Page(
+      Query$SearchScreens$Page(
           media: media == null ? this.media : media(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$HomePage$Page$media
+class Query$SearchScreens$Page$media
     implements
         Fragment$SeasonSelectors$media,
         Fragment$MediaList$media,
         Fragment$MediaListItem {
-  Query$HomePage$Page$media(
+  Query$SearchScreens$Page$media(
       {this.season,
       this.seasonYear,
       required this.$__typename,
@@ -324,8 +330,8 @@ class Query$HomePage$Page$media
       this.coverImage});
 
   @override
-  factory Query$HomePage$Page$media.fromJson(Map<String, dynamic> json) =>
-      _$Query$HomePage$Page$mediaFromJson(json);
+  factory Query$SearchScreens$Page$media.fromJson(Map<String, dynamic> json) =>
+      _$Query$SearchScreens$Page$mediaFromJson(json);
 
   @JsonKey(unknownEnumValue: Enum$MediaSeason.$unknown)
   final Enum$MediaSeason? season;
@@ -335,11 +341,11 @@ class Query$HomePage$Page$media
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  final Query$HomePage$Page$media$title? title;
+  final Query$SearchScreens$Page$media$title? title;
 
-  final Query$HomePage$Page$media$coverImage? coverImage;
+  final Query$SearchScreens$Page$media$coverImage? coverImage;
 
-  Map<String, dynamic> toJson() => _$Query$HomePage$Page$mediaToJson(this);
+  Map<String, dynamic> toJson() => _$Query$SearchScreens$Page$mediaToJson(this);
   int get hashCode {
     final l$season = season;
     final l$seasonYear = seasonYear;
@@ -353,7 +359,7 @@ class Query$HomePage$Page$media
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$HomePage$Page$media) ||
+    if (!(other is Query$SearchScreens$Page$media) ||
         runtimeType != other.runtimeType) return false;
     final l$season = season;
     final lOther$season = other.season;
@@ -374,15 +380,15 @@ class Query$HomePage$Page$media
   }
 }
 
-extension UtilityExtension$Query$HomePage$Page$media
-    on Query$HomePage$Page$media {
-  Query$HomePage$Page$media copyWith(
+extension UtilityExtension$Query$SearchScreens$Page$media
+    on Query$SearchScreens$Page$media {
+  Query$SearchScreens$Page$media copyWith(
           {Enum$MediaSeason? Function()? season,
           int? Function()? seasonYear,
           String? $__typename,
-          Query$HomePage$Page$media$title? Function()? title,
-          Query$HomePage$Page$media$coverImage? Function()? coverImage}) =>
-      Query$HomePage$Page$media(
+          Query$SearchScreens$Page$media$title? Function()? title,
+          Query$SearchScreens$Page$media$coverImage? Function()? coverImage}) =>
+      Query$SearchScreens$Page$media(
           season: season == null ? this.season : season(),
           seasonYear: seasonYear == null ? this.seasonYear : seasonYear(),
           $__typename: $__typename == null ? this.$__typename : $__typename,
@@ -391,13 +397,15 @@ extension UtilityExtension$Query$HomePage$Page$media
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$HomePage$Page$media$title
+class Query$SearchScreens$Page$media$title
     implements Fragment$MediaList$media$title, Fragment$MediaListItem$title {
-  Query$HomePage$Page$media$title({this.native, required this.$__typename});
+  Query$SearchScreens$Page$media$title(
+      {this.native, required this.$__typename});
 
   @override
-  factory Query$HomePage$Page$media$title.fromJson(Map<String, dynamic> json) =>
-      _$Query$HomePage$Page$media$titleFromJson(json);
+  factory Query$SearchScreens$Page$media$title.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$SearchScreens$Page$media$titleFromJson(json);
 
   final String? native;
 
@@ -405,7 +413,7 @@ class Query$HomePage$Page$media$title
   final String $__typename;
 
   Map<String, dynamic> toJson() =>
-      _$Query$HomePage$Page$media$titleToJson(this);
+      _$Query$SearchScreens$Page$media$titleToJson(this);
   int get hashCode {
     final l$native = native;
     final l$$__typename = $__typename;
@@ -415,7 +423,7 @@ class Query$HomePage$Page$media$title
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$HomePage$Page$media$title) ||
+    if (!(other is Query$SearchScreens$Page$media$title) ||
         runtimeType != other.runtimeType) return false;
     final l$native = native;
     final lOther$native = other.native;
@@ -427,27 +435,27 @@ class Query$HomePage$Page$media$title
   }
 }
 
-extension UtilityExtension$Query$HomePage$Page$media$title
-    on Query$HomePage$Page$media$title {
-  Query$HomePage$Page$media$title copyWith(
+extension UtilityExtension$Query$SearchScreens$Page$media$title
+    on Query$SearchScreens$Page$media$title {
+  Query$SearchScreens$Page$media$title copyWith(
           {String? Function()? native, String? $__typename}) =>
-      Query$HomePage$Page$media$title(
+      Query$SearchScreens$Page$media$title(
           native: native == null ? this.native : native(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$HomePage$Page$media$coverImage
+class Query$SearchScreens$Page$media$coverImage
     implements
         Fragment$MediaList$media$coverImage,
         Fragment$MediaListItem$coverImage {
-  Query$HomePage$Page$media$coverImage(
+  Query$SearchScreens$Page$media$coverImage(
       {this.extraLarge, required this.$__typename});
 
   @override
-  factory Query$HomePage$Page$media$coverImage.fromJson(
+  factory Query$SearchScreens$Page$media$coverImage.fromJson(
           Map<String, dynamic> json) =>
-      _$Query$HomePage$Page$media$coverImageFromJson(json);
+      _$Query$SearchScreens$Page$media$coverImageFromJson(json);
 
   final String? extraLarge;
 
@@ -455,7 +463,7 @@ class Query$HomePage$Page$media$coverImage
   final String $__typename;
 
   Map<String, dynamic> toJson() =>
-      _$Query$HomePage$Page$media$coverImageToJson(this);
+      _$Query$SearchScreens$Page$media$coverImageToJson(this);
   int get hashCode {
     final l$extraLarge = extraLarge;
     final l$$__typename = $__typename;
@@ -465,7 +473,7 @@ class Query$HomePage$Page$media$coverImage
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$HomePage$Page$media$coverImage) ||
+    if (!(other is Query$SearchScreens$Page$media$coverImage) ||
         runtimeType != other.runtimeType) return false;
     final l$extraLarge = extraLarge;
     final lOther$extraLarge = other.extraLarge;
@@ -477,11 +485,11 @@ class Query$HomePage$Page$media$coverImage
   }
 }
 
-extension UtilityExtension$Query$HomePage$Page$media$coverImage
-    on Query$HomePage$Page$media$coverImage {
-  Query$HomePage$Page$media$coverImage copyWith(
+extension UtilityExtension$Query$SearchScreens$Page$media$coverImage
+    on Query$SearchScreens$Page$media$coverImage {
+  Query$SearchScreens$Page$media$coverImage copyWith(
           {String? Function()? extraLarge, String? $__typename}) =>
-      Query$HomePage$Page$media$coverImage(
+      Query$SearchScreens$Page$media$coverImage(
           extraLarge: extraLarge == null ? this.extraLarge : extraLarge(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }

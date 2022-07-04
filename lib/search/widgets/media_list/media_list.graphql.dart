@@ -1,7 +1,7 @@
+import '../../../schema.graphql.dart';
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:json_annotation/json_annotation.dart';
-import 'schema.graphql.dart';
 part 'media_list.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)

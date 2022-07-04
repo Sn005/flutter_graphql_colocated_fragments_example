@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hello_flutter_graphql/main.graphql.dart';
 import 'package:hello_flutter_graphql/schema.graphql.dart';
+
+import '../../screens/search_screens.graphql.dart';
 
 final currentYear = DateTime.now().year;
 const yearsPeriod = 20;
 final yearRange = List.generate(yearsPeriod, (i) => currentYear - i);
 
-class SeasonSelectors extends HookWidget {
-  const SeasonSelectors({
+class SearchScreenQueryVariablesSelectors extends HookWidget {
+  const SearchScreenQueryVariablesSelectors({
     Key? key,
     required this.variables,
     required this.onChangeVariables,
   }) : super(key: key);
-  final Variables$Query$HomePage variables;
-  final Function(Variables$Query$HomePage)? onChangeVariables;
+  final Variables$Query$SearchScreens variables;
+  final Function(Variables$Query$SearchScreens)? onChangeVariables;
   @override
   Widget build(BuildContext context) {
     return Row(children: [
@@ -32,8 +33,8 @@ class SeasonYearSelector extends StatelessWidget {
     required this.variables,
     required this.onChangeVariables,
   }) : super(key: key);
-  final Variables$Query$HomePage variables;
-  final Function(Variables$Query$HomePage)? onChangeVariables;
+  final Variables$Query$SearchScreens variables;
+  final Function(Variables$Query$SearchScreens)? onChangeVariables;
   @override
   Widget build(BuildContext context) {
     return DropdownButton<int>(
@@ -47,7 +48,7 @@ class SeasonYearSelector extends StatelessWidget {
       onChanged: (int? value) {
         if (value != null) {
           onChangeVariables?.call(
-            Variables$Query$HomePage(
+            Variables$Query$SearchScreens(
               seasonYear: value,
               season: variables.season,
             ),
@@ -64,8 +65,8 @@ class SeasonSelector extends StatelessWidget {
     required this.variables,
     required this.onChangeVariables,
   }) : super(key: key);
-  final Variables$Query$HomePage variables;
-  final Function(Variables$Query$HomePage)? onChangeVariables;
+  final Variables$Query$SearchScreens variables;
+  final Function(Variables$Query$SearchScreens)? onChangeVariables;
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,7 @@ class SeasonSelector extends StatelessWidget {
       onChanged: (Enum$MediaSeason? value) {
         if (value != null) {
           onChangeVariables?.call(
-            Variables$Query$HomePage(
+            Variables$Query$SearchScreens(
               seasonYear: variables.seasonYear,
               season: value,
             ),
