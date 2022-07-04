@@ -8,33 +8,36 @@ const yearsPeriod = 20;
 final yearRange = List.generate(yearsPeriod, (i) => currentYear - i);
 
 class SeasonSelectors extends HookWidget {
+  const SeasonSelectors({
+    Key? key,
+    required this.variables,
+    required this.onChangeVariables,
+  }) : super(key: key);
   final Variables$Query$HomePage variables;
-  final Enum$MediaSeason? season;
-  final int? seasonYear;
-  const SeasonSelectors(
-      {Key? key, this.seasonYear, this.season, required this.variables})
-      : super(key: key);
-
+  final Function(Variables$Query$HomePage)? onChangeVariables;
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      SeasonYearSelector(seasonYear: variables.seasonYear),
-      SeasonSelector(season: variables.season),
+      SeasonYearSelector(
+          variables: variables, onChangeVariables: onChangeVariables),
+      SeasonSelector(
+          variables: variables, onChangeVariables: onChangeVariables),
     ]);
   }
 }
 
 class SeasonYearSelector extends StatelessWidget {
-  final int? seasonYear;
   const SeasonYearSelector({
     Key? key,
-    this.seasonYear,
+    required this.variables,
+    required this.onChangeVariables,
   }) : super(key: key);
-
+  final Variables$Query$HomePage variables;
+  final Function(Variables$Query$HomePage)? onChangeVariables;
   @override
   Widget build(BuildContext context) {
     return DropdownButton<int>(
-      value: seasonYear,
+      value: variables.seasonYear,
       items: yearRange.map<DropdownMenuItem<int>>((value) {
         return DropdownMenuItem<int>(
           value: value,
@@ -43,7 +46,12 @@ class SeasonYearSelector extends StatelessWidget {
       }).toList(),
       onChanged: (int? value) {
         if (value != null) {
-          print(value);
+          onChangeVariables?.call(
+            Variables$Query$HomePage(
+              seasonYear: value,
+              season: variables.season,
+            ),
+          );
         }
       },
     );
@@ -51,16 +59,18 @@ class SeasonYearSelector extends StatelessWidget {
 }
 
 class SeasonSelector extends StatelessWidget {
-  final Enum$MediaSeason? season;
   const SeasonSelector({
     Key? key,
-    this.season,
+    required this.variables,
+    required this.onChangeVariables,
   }) : super(key: key);
+  final Variables$Query$HomePage variables;
+  final Function(Variables$Query$HomePage)? onChangeVariables;
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<Enum$MediaSeason>(
-      value: season,
+      value: variables.season,
       items: <Enum$MediaSeason>[
         Enum$MediaSeason.WINTER,
         Enum$MediaSeason.SPRING,
@@ -74,7 +84,12 @@ class SeasonSelector extends StatelessWidget {
       }).toList(),
       onChanged: (Enum$MediaSeason? value) {
         if (value != null) {
-          print(value);
+          onChangeVariables?.call(
+            Variables$Query$HomePage(
+              seasonYear: variables.seasonYear,
+              season: value,
+            ),
+          );
         }
       },
     );

@@ -42,6 +42,7 @@ class MyHomePage extends HookWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
+
   @override
   Widget build(BuildContext context) {
     final queryVariables = useState<Variables$Query$HomePage>(
@@ -49,6 +50,10 @@ class MyHomePage extends HookWidget {
     );
     final queryResult = useQuery$HomePage(
         Options$Query$HomePage(variables: queryVariables.value));
+    final onChangeVariables =
+        useCallback((Variables$Query$HomePage newVariables) {
+      queryVariables.value = newVariables;
+    }, [queryVariables]);
     final result = queryResult.result;
 
     if (result.hasException) {
@@ -68,7 +73,9 @@ class MyHomePage extends HookWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SeasonSelectors(variables: queryVariables.value),
+          SeasonSelectors(
+              variables: queryVariables.value,
+              onChangeVariables: onChangeVariables),
           MediaList(
               data: Fragment$MediaList(
                   media: page?.media, $__typename: page!.$__typename)),
