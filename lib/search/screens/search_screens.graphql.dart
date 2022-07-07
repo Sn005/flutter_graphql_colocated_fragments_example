@@ -1,5 +1,4 @@
 import '../../schema.graphql.dart';
-import '../../season_selectors/season_selectors.graphql.dart';
 import '../widgets/media_list/media_list.graphql.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
@@ -119,8 +118,6 @@ const documentNodeQuerySearchScreens = DocumentNode(definitions: [
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FragmentSpreadNode(
-                  name: NameNode(value: 'SeasonSelectors'), directives: []),
-              FragmentSpreadNode(
                   name: NameNode(value: 'MediaList'), directives: []),
               FieldNode(
                   name: NameNode(value: '__typename'),
@@ -136,7 +133,6 @@ const documentNodeQuerySearchScreens = DocumentNode(definitions: [
             directives: [],
             selectionSet: null)
       ])),
-  fragmentDefinitionSeasonSelectors,
   fragmentDefinitionMediaList,
   fragmentDefinitionMediaListItem,
 ]);
@@ -258,8 +254,7 @@ class Query$SearchScreens$Widget
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$SearchScreens$Page
-    implements Fragment$SeasonSelectors, Fragment$MediaList {
+class Query$SearchScreens$Page implements Fragment$MediaList {
   Query$SearchScreens$Page({this.media, required this.$__typename});
 
   @override
@@ -318,42 +313,27 @@ extension UtilityExtension$Query$SearchScreens$Page
 
 @JsonSerializable(explicitToJson: true)
 class Query$SearchScreens$Page$media
-    implements
-        Fragment$SeasonSelectors$media,
-        Fragment$MediaList$media,
-        Fragment$MediaListItem {
+    implements Fragment$MediaList$media, Fragment$MediaListItem {
   Query$SearchScreens$Page$media(
-      {this.season,
-      this.seasonYear,
-      required this.$__typename,
-      this.title,
-      this.coverImage});
+      {this.title, this.coverImage, required this.$__typename});
 
   @override
   factory Query$SearchScreens$Page$media.fromJson(Map<String, dynamic> json) =>
       _$Query$SearchScreens$Page$mediaFromJson(json);
 
-  @JsonKey(unknownEnumValue: Enum$MediaSeason.$unknown)
-  final Enum$MediaSeason? season;
-
-  final int? seasonYear;
-
-  @JsonKey(name: '__typename')
-  final String $__typename;
-
   final Query$SearchScreens$Page$media$title? title;
 
   final Query$SearchScreens$Page$media$coverImage? coverImage;
 
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
   Map<String, dynamic> toJson() => _$Query$SearchScreens$Page$mediaToJson(this);
   int get hashCode {
-    final l$season = season;
-    final l$seasonYear = seasonYear;
-    final l$$__typename = $__typename;
     final l$title = title;
     final l$coverImage = coverImage;
-    return Object.hashAll(
-        [l$season, l$seasonYear, l$$__typename, l$title, l$coverImage]);
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$title, l$coverImage, l$$__typename]);
   }
 
   @override
@@ -361,21 +341,15 @@ class Query$SearchScreens$Page$media
     if (identical(this, other)) return true;
     if (!(other is Query$SearchScreens$Page$media) ||
         runtimeType != other.runtimeType) return false;
-    final l$season = season;
-    final lOther$season = other.season;
-    if (l$season != lOther$season) return false;
-    final l$seasonYear = seasonYear;
-    final lOther$seasonYear = other.seasonYear;
-    if (l$seasonYear != lOther$seasonYear) return false;
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
     final l$coverImage = coverImage;
     final lOther$coverImage = other.coverImage;
     if (l$coverImage != lOther$coverImage) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
     return true;
   }
 }
@@ -383,17 +357,13 @@ class Query$SearchScreens$Page$media
 extension UtilityExtension$Query$SearchScreens$Page$media
     on Query$SearchScreens$Page$media {
   Query$SearchScreens$Page$media copyWith(
-          {Enum$MediaSeason? Function()? season,
-          int? Function()? seasonYear,
-          String? $__typename,
-          Query$SearchScreens$Page$media$title? Function()? title,
-          Query$SearchScreens$Page$media$coverImage? Function()? coverImage}) =>
+          {Query$SearchScreens$Page$media$title? Function()? title,
+          Query$SearchScreens$Page$media$coverImage? Function()? coverImage,
+          String? $__typename}) =>
       Query$SearchScreens$Page$media(
-          season: season == null ? this.season : season(),
-          seasonYear: seasonYear == null ? this.seasonYear : seasonYear(),
-          $__typename: $__typename == null ? this.$__typename : $__typename,
           title: title == null ? this.title : title(),
-          coverImage: coverImage == null ? this.coverImage : coverImage());
+          coverImage: coverImage == null ? this.coverImage : coverImage(),
+          $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
 @JsonSerializable(explicitToJson: true)

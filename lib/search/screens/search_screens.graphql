@@ -1,6 +1,5 @@
 query SearchScreens($season: MediaSeason, $seasonYear: Int) {
   Page {
-    ...SeasonSelectors
     ...MediaList
   }
 }

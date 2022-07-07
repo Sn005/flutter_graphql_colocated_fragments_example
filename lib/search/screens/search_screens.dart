@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hello_flutter_graphql/search/screens/search_screens.graphql.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../widgets/media_list/index.dart';
 import '../widgets/search_screen_query_variables_selectors/index.dart';
 
 import 'search_screens.graphql.dart';
 
-class SearchScreens extends HookWidget {
+class SearchScreens extends HookConsumerWidget {
   const SearchScreens({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final queryVariables = useState<Variables$Query$SearchScreens>(
       Variables$Query$SearchScreens(seasonYear: DateTime.now().year),
     );

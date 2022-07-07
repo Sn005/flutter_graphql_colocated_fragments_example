@@ -67,10 +67,6 @@ Map<String, dynamic> _$Query$SearchScreens$PageToJson(
 Query$SearchScreens$Page$media _$Query$SearchScreens$Page$mediaFromJson(
         Map<String, dynamic> json) =>
     Query$SearchScreens$Page$media(
-      season: $enumDecodeNullable(_$Enum$MediaSeasonEnumMap, json['season'],
-          unknownValue: Enum$MediaSeason.$unknown),
-      seasonYear: json['seasonYear'] as int?,
-      $__typename: json['__typename'] as String,
       title: json['title'] == null
           ? null
           : Query$SearchScreens$Page$media$title.fromJson(
@@ -79,16 +75,15 @@ Query$SearchScreens$Page$media _$Query$SearchScreens$Page$mediaFromJson(
           ? null
           : Query$SearchScreens$Page$media$coverImage.fromJson(
               json['coverImage'] as Map<String, dynamic>),
+      $__typename: json['__typename'] as String,
     );
 
 Map<String, dynamic> _$Query$SearchScreens$Page$mediaToJson(
         Query$SearchScreens$Page$media instance) =>
     <String, dynamic>{
-      'season': _$Enum$MediaSeasonEnumMap[instance.season],
-      'seasonYear': instance.seasonYear,
-      '__typename': instance.$__typename,
       'title': instance.title?.toJson(),
       'coverImage': instance.coverImage?.toJson(),
+      '__typename': instance.$__typename,
     };
 
 Query$SearchScreens$Page$media$title
