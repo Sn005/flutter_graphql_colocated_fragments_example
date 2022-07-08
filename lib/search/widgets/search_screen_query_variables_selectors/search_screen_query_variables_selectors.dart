@@ -4,7 +4,7 @@ import 'package:hello_flutter_graphql/schema.graphql.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../hooks/useSearchScreenQueryVariables/index.dart';
-import '../../screens/search_screens.graphql.dart';
+import '../../screens/search_screen.graphql.dart';
 
 final currentYear = DateTime.now().year;
 const yearsPeriod = 20;
@@ -43,7 +43,7 @@ class SeasonYearSelector extends HookConsumerWidget {
       onChanged: (int? value) {
         if (value != null) {
           action.changeQueryVariables(
-            Variables$Query$SearchScreens(
+            Variables$Query$SearchScreen(
               seasonYear: value,
               season: variables.state.season,
             ),
@@ -80,7 +80,7 @@ class SeasonSelector extends HookConsumerWidget {
       onChanged: (Enum$MediaSeason? value) {
         if (value != null) {
           action.changeQueryVariables(
-            Variables$Query$SearchScreens(
+            Variables$Query$SearchScreen(
               seasonYear: variables.state.seasonYear,
               season: value,
             ),

@@ -1,5 +1,0 @@
-query SearchScreens($season: MediaSeason, $seasonYear: Int) {
-  Page {
-    ...MediaList
-  }
-}

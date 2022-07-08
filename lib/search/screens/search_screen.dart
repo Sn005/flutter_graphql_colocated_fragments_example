@@ -4,17 +4,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../hooks/useSearchScreenQueryVariables/index.dart';
 import '../widgets/media_list/index.dart';
 import '../widgets/search_screen_query_variables_selectors/index.dart';
-import 'use_search_screens.dart';
-import 'search_screens.graphql.dart';
+import 'use_search_screen.dart';
+import 'search_screen.graphql.dart';
 
-class SearchScreens extends HookConsumerWidget {
-  const SearchScreens({Key? key, required this.title}) : super(key: key);
+class SearchScreen extends HookConsumerWidget {
+  const SearchScreen({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final result = useSearchScreens(ref);
+    final result = useSearchScreen(ref);
     if (result.hasException) {
       return Text(result.exception.toString());
     }

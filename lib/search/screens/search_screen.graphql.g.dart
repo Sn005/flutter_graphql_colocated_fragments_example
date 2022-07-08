@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'search_screens.graphql.dart';
+part of 'search_screen.graphql.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Variables$Query$SearchScreens _$Variables$Query$SearchScreensFromJson(
+Variables$Query$SearchScreen _$Variables$Query$SearchScreenFromJson(
         Map<String, dynamic> json) =>
-    Variables$Query$SearchScreens(
+    Variables$Query$SearchScreen(
       season: $enumDecodeNullable(_$Enum$MediaSeasonEnumMap, json['season'],
           unknownValue: Enum$MediaSeason.$unknown),
       seasonYear: json['seasonYear'] as int?,
     );
 
-Map<String, dynamic> _$Variables$Query$SearchScreensToJson(
-        Variables$Query$SearchScreens instance) =>
+Map<String, dynamic> _$Variables$Query$SearchScreenToJson(
+        Variables$Query$SearchScreen instance) =>
     <String, dynamic>{
       'season': _$Enum$MediaSeasonEnumMap[instance.season],
       'seasonYear': instance.seasonYear,
@@ -29,87 +29,86 @@ const _$Enum$MediaSeasonEnumMap = {
   Enum$MediaSeason.$unknown: r'$unknown',
 };
 
-Query$SearchScreens _$Query$SearchScreensFromJson(Map<String, dynamic> json) =>
-    Query$SearchScreens(
+Query$SearchScreen _$Query$SearchScreenFromJson(Map<String, dynamic> json) =>
+    Query$SearchScreen(
       Page: json['Page'] == null
           ? null
-          : Query$SearchScreens$Page.fromJson(
+          : Query$SearchScreen$Page.fromJson(
               json['Page'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
 
-Map<String, dynamic> _$Query$SearchScreensToJson(
-        Query$SearchScreens instance) =>
+Map<String, dynamic> _$Query$SearchScreenToJson(Query$SearchScreen instance) =>
     <String, dynamic>{
       'Page': instance.Page?.toJson(),
       '__typename': instance.$__typename,
     };
 
-Query$SearchScreens$Page _$Query$SearchScreens$PageFromJson(
+Query$SearchScreen$Page _$Query$SearchScreen$PageFromJson(
         Map<String, dynamic> json) =>
-    Query$SearchScreens$Page(
+    Query$SearchScreen$Page(
       media: (json['media'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : Query$SearchScreens$Page$media.fromJson(
+              : Query$SearchScreen$Page$media.fromJson(
                   e as Map<String, dynamic>))
           .toList(),
       $__typename: json['__typename'] as String,
     );
 
-Map<String, dynamic> _$Query$SearchScreens$PageToJson(
-        Query$SearchScreens$Page instance) =>
+Map<String, dynamic> _$Query$SearchScreen$PageToJson(
+        Query$SearchScreen$Page instance) =>
     <String, dynamic>{
       'media': instance.media?.map((e) => e?.toJson()).toList(),
       '__typename': instance.$__typename,
     };
 
-Query$SearchScreens$Page$media _$Query$SearchScreens$Page$mediaFromJson(
+Query$SearchScreen$Page$media _$Query$SearchScreen$Page$mediaFromJson(
         Map<String, dynamic> json) =>
-    Query$SearchScreens$Page$media(
+    Query$SearchScreen$Page$media(
       title: json['title'] == null
           ? null
-          : Query$SearchScreens$Page$media$title.fromJson(
+          : Query$SearchScreen$Page$media$title.fromJson(
               json['title'] as Map<String, dynamic>),
       coverImage: json['coverImage'] == null
           ? null
-          : Query$SearchScreens$Page$media$coverImage.fromJson(
+          : Query$SearchScreen$Page$media$coverImage.fromJson(
               json['coverImage'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
 
-Map<String, dynamic> _$Query$SearchScreens$Page$mediaToJson(
-        Query$SearchScreens$Page$media instance) =>
+Map<String, dynamic> _$Query$SearchScreen$Page$mediaToJson(
+        Query$SearchScreen$Page$media instance) =>
     <String, dynamic>{
       'title': instance.title?.toJson(),
       'coverImage': instance.coverImage?.toJson(),
       '__typename': instance.$__typename,
     };
 
-Query$SearchScreens$Page$media$title
-    _$Query$SearchScreens$Page$media$titleFromJson(Map<String, dynamic> json) =>
-        Query$SearchScreens$Page$media$title(
+Query$SearchScreen$Page$media$title
+    _$Query$SearchScreen$Page$media$titleFromJson(Map<String, dynamic> json) =>
+        Query$SearchScreen$Page$media$title(
           native: json['native'] as String?,
           $__typename: json['__typename'] as String,
         );
 
-Map<String, dynamic> _$Query$SearchScreens$Page$media$titleToJson(
-        Query$SearchScreens$Page$media$title instance) =>
+Map<String, dynamic> _$Query$SearchScreen$Page$media$titleToJson(
+        Query$SearchScreen$Page$media$title instance) =>
     <String, dynamic>{
       'native': instance.native,
       '__typename': instance.$__typename,
     };
 
-Query$SearchScreens$Page$media$coverImage
-    _$Query$SearchScreens$Page$media$coverImageFromJson(
+Query$SearchScreen$Page$media$coverImage
+    _$Query$SearchScreen$Page$media$coverImageFromJson(
             Map<String, dynamic> json) =>
-        Query$SearchScreens$Page$media$coverImage(
+        Query$SearchScreen$Page$media$coverImage(
           extraLarge: json['extraLarge'] as String?,
           $__typename: json['__typename'] as String,
         );
 
-Map<String, dynamic> _$Query$SearchScreens$Page$media$coverImageToJson(
-        Query$SearchScreens$Page$media$coverImage instance) =>
+Map<String, dynamic> _$Query$SearchScreen$Page$media$coverImageToJson(
+        Query$SearchScreen$Page$media$coverImage instance) =>
     <String, dynamic>{
       'extraLarge': instance.extraLarge,
       '__typename': instance.$__typename,

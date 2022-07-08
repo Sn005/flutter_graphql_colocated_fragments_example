@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../screens/search_screens.graphql.dart';
+import '../../screens/search_screen.graphql.dart';
 import 'query_variables_state.dart';
 
 class UseSearchScreenQueryVariables {
-  final Variables$Query$SearchScreens state;
+  final Variables$Query$SearchScreen state;
   final QueryVariablesNotifier action;
 
   UseSearchScreenQueryVariables(this.state, this.action);
