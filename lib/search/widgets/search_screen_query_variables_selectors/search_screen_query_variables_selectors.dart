@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hello_flutter_graphql/schema.graphql.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../hooks/useSearchScreenQueryVariables/index.dart';
+import '../../hooks/use_search_screen_query_variables/index.dart';
 import '../../screens/search_screen.graphql.dart';
 
 final currentYear = DateTime.now().year;

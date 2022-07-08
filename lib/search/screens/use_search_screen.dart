@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import '../hooks/useSearchScreenQueryVariables/use_search_screen_query_variables.dart';
+import '../hooks/use_search_screen_query_variables/use_search_screen_query_variables.dart';
 import 'search_screen.graphql.dart';
 
 class UseSearchScreen {
