@@ -1,31 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../screens/search_screens.graphql.dart';
 
-@immutable
-class QueryVariables {
-  const QueryVariables({this.variables});
+class QueryVariablesNotifier
+    extends StateNotifier<Variables$Query$SearchScreens> {
+  QueryVariablesNotifier()
+      : super(Variables$Query$SearchScreens(
+          seasonYear: DateTime.now().year,
+        ));
 
-  final Variables$Query$SearchScreens? variables;
-
-  QueryVariables copyWith({Variables$Query$SearchScreens? variables}) {
-    return QueryVariables(
-      variables: variables ?? this.variables,
-    );
-  }
+  void changeQueryVariables(Variables$Query$SearchScreens newState) =>
+      state = newState;
 }
 
-class QueryVariablesNotifier extends StateNotifier<QueryVariables> {
-  QueryVariablesNotifier({
-    Variables$Query$SearchScreens? variables,
-  }) : super(QueryVariables(variables: variables));
-
-  void changeQueryVariables(QueryVariables newQueryVariables) {
-    state = newQueryVariables;
-  }
-}
-
-final queryVariablesProvider =
-    StateNotifierProvider<QueryVariablesNotifier, QueryVariables>((ref) {
+final queryVariablesProvider = StateNotifierProvider<QueryVariablesNotifier,
+    Variables$Query$SearchScreens>((ref) {
   return QueryVariablesNotifier();
 });

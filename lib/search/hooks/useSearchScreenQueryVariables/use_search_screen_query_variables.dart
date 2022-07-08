@@ -1,21 +1,18 @@
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../screens/search_screens.graphql.dart';
-import './query_variables_state.dart';
+import 'query_variables_state.dart';
 
 class UseSearchScreenQueryVariables {
-  final Variables$Query$SearchScreens variables;
-  final void Function(QueryVariables) changeQueryVariables;
+  final Variables$Query$SearchScreens state;
+  final QueryVariablesNotifier action;
 
-  UseSearchScreenQueryVariables(this.variables, this.changeQueryVariables);
+  UseSearchScreenQueryVariables(this.state, this.action);
 }
 
 UseSearchScreenQueryVariables useSearchScreenQueryVariables(WidgetRef ref) {
-  final variables = useState<Variables$Query$SearchScreens>(
-    Variables$Query$SearchScreens(seasonYear: DateTime.now().year),
-  );
+  final state = ref.watch(queryVariablesProvider);
   final action = ref.read(queryVariablesProvider.notifier);
-  final changeQueryVariables = action.changeQueryVariables;
 
-  return UseSearchScreenQueryVariables(variables.value, changeQueryVariables);
+  return UseSearchScreenQueryVariables(state, action);
 }

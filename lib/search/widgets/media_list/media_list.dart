@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'media_list.graphql.dart';
 
 class MediaList extends StatelessWidget {

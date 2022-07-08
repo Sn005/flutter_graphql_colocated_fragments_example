@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hello_flutter_graphql/search/screens/search_screens.graphql.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../hooks/useSearchScreenQueryVariables/index.dart';
 import '../widgets/media_list/index.dart';
 import '../widgets/search_screen_query_variables_selectors/index.dart';
-
+import 'use_search_screens.dart';
 import 'search_screens.graphql.dart';
 
 class SearchScreens extends HookConsumerWidget {
@@ -14,17 +14,7 @@ class SearchScreens extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final queryVariables = useState<Variables$Query$SearchScreens>(
-      Variables$Query$SearchScreens(seasonYear: DateTime.now().year),
-    );
-    final queryResult = useQuery$SearchScreens(
-        Options$Query$SearchScreens(variables: queryVariables.value));
-    final onChangeVariables =
-        useCallback((Variables$Query$SearchScreens newVariables) {
-      queryVariables.value = newVariables;
-    }, [queryVariables]);
-    final result = queryResult.result;
-
+    final result = useSearchScreens(ref);
     if (result.hasException) {
       return Text(result.exception.toString());
     }
@@ -32,7 +22,7 @@ class SearchScreens extends HookConsumerWidget {
     if (result.isLoading) {
       return const Text('Loading');
     }
-    final data = result.parsedData;
+    final data = result.data;
     final page = data?.Page;
     return Scaffold(
       appBar: AppBar(
@@ -42,9 +32,7 @@ class SearchScreens extends HookConsumerWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SearchScreenQueryVariablesSelectors(
-              variables: queryVariables.value,
-              onChangeVariables: onChangeVariables),
+          const SearchScreenQueryVariablesSelectors(),
           MediaList(
               data: Fragment$MediaList(
                   media: page?.media, $__typename: page!.$__typename)),
