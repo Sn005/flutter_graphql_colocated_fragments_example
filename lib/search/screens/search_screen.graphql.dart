@@ -440,14 +440,14 @@ class Query$SearchScreen$Page$media$coverImage
         Fragment$MediaList$media$coverImage,
         Fragment$MediaListItem$coverImage {
   Query$SearchScreen$Page$media$coverImage(
-      {this.extraLarge, required this.$__typename});
+      {this.large, required this.$__typename});
 
   @override
   factory Query$SearchScreen$Page$media$coverImage.fromJson(
           Map<String, dynamic> json) =>
       _$Query$SearchScreen$Page$media$coverImageFromJson(json);
 
-  final String? extraLarge;
+  final String? large;
 
   @JsonKey(name: '__typename')
   final String $__typename;
@@ -455,9 +455,9 @@ class Query$SearchScreen$Page$media$coverImage
   Map<String, dynamic> toJson() =>
       _$Query$SearchScreen$Page$media$coverImageToJson(this);
   int get hashCode {
-    final l$extraLarge = extraLarge;
+    final l$large = large;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$extraLarge, l$$__typename]);
+    return Object.hashAll([l$large, l$$__typename]);
   }
 
   @override
@@ -465,9 +465,9 @@ class Query$SearchScreen$Page$media$coverImage
     if (identical(this, other)) return true;
     if (!(other is Query$SearchScreen$Page$media$coverImage) ||
         runtimeType != other.runtimeType) return false;
-    final l$extraLarge = extraLarge;
-    final lOther$extraLarge = other.extraLarge;
-    if (l$extraLarge != lOther$extraLarge) return false;
+    final l$large = large;
+    final lOther$large = other.large;
+    if (l$large != lOther$large) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -478,8 +478,8 @@ class Query$SearchScreen$Page$media$coverImage
 extension UtilityExtension$Query$SearchScreen$Page$media$coverImage
     on Query$SearchScreen$Page$media$coverImage {
   Query$SearchScreen$Page$media$coverImage copyWith(
-          {String? Function()? extraLarge, String? $__typename}) =>
+          {String? Function()? large, String? $__typename}) =>
       Query$SearchScreen$Page$media$coverImage(
-          extraLarge: extraLarge == null ? this.extraLarge : extraLarge(),
+          large: large == null ? this.large : large(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }

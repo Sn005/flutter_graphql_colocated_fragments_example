@@ -298,15 +298,14 @@ extension UtilityExtension$Fragment$MediaList$media$title
 @JsonSerializable(explicitToJson: true)
 class Fragment$MediaList$media$coverImage
     implements Fragment$MediaListItem$coverImage {
-  Fragment$MediaList$media$coverImage(
-      {this.extraLarge, required this.$__typename});
+  Fragment$MediaList$media$coverImage({this.large, required this.$__typename});
 
   @override
   factory Fragment$MediaList$media$coverImage.fromJson(
           Map<String, dynamic> json) =>
       _$Fragment$MediaList$media$coverImageFromJson(json);
 
-  final String? extraLarge;
+  final String? large;
 
   @JsonKey(name: '__typename')
   final String $__typename;
@@ -314,9 +313,9 @@ class Fragment$MediaList$media$coverImage
   Map<String, dynamic> toJson() =>
       _$Fragment$MediaList$media$coverImageToJson(this);
   int get hashCode {
-    final l$extraLarge = extraLarge;
+    final l$large = large;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$extraLarge, l$$__typename]);
+    return Object.hashAll([l$large, l$$__typename]);
   }
 
   @override
@@ -324,9 +323,9 @@ class Fragment$MediaList$media$coverImage
     if (identical(this, other)) return true;
     if (!(other is Fragment$MediaList$media$coverImage) ||
         runtimeType != other.runtimeType) return false;
-    final l$extraLarge = extraLarge;
-    final lOther$extraLarge = other.extraLarge;
-    if (l$extraLarge != lOther$extraLarge) return false;
+    final l$large = large;
+    final lOther$large = other.large;
+    if (l$large != lOther$large) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -337,9 +336,9 @@ class Fragment$MediaList$media$coverImage
 extension UtilityExtension$Fragment$MediaList$media$coverImage
     on Fragment$MediaList$media$coverImage {
   Fragment$MediaList$media$coverImage copyWith(
-          {String? Function()? extraLarge, String? $__typename}) =>
+          {String? Function()? large, String? $__typename}) =>
       Fragment$MediaList$media$coverImage(
-          extraLarge: extraLarge == null ? this.extraLarge : extraLarge(),
+          large: large == null ? this.large : large(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
 
@@ -457,7 +456,7 @@ const fragmentDefinitionMediaListItem = FragmentDefinitionNode(
           directives: [],
           selectionSet: SelectionSetNode(selections: [
             FieldNode(
-                name: NameNode(value: 'extraLarge'),
+                name: NameNode(value: 'large'),
                 alias: null,
                 arguments: [],
                 directives: [],
@@ -552,15 +551,14 @@ extension UtilityExtension$Fragment$MediaListItem$title
 
 @JsonSerializable(explicitToJson: true)
 class Fragment$MediaListItem$coverImage {
-  Fragment$MediaListItem$coverImage(
-      {this.extraLarge, required this.$__typename});
+  Fragment$MediaListItem$coverImage({this.large, required this.$__typename});
 
   @override
   factory Fragment$MediaListItem$coverImage.fromJson(
           Map<String, dynamic> json) =>
       _$Fragment$MediaListItem$coverImageFromJson(json);
 
-  final String? extraLarge;
+  final String? large;
 
   @JsonKey(name: '__typename')
   final String $__typename;
@@ -568,9 +566,9 @@ class Fragment$MediaListItem$coverImage {
   Map<String, dynamic> toJson() =>
       _$Fragment$MediaListItem$coverImageToJson(this);
   int get hashCode {
-    final l$extraLarge = extraLarge;
+    final l$large = large;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$extraLarge, l$$__typename]);
+    return Object.hashAll([l$large, l$$__typename]);
   }
 
   @override
@@ -578,9 +576,9 @@ class Fragment$MediaListItem$coverImage {
     if (identical(this, other)) return true;
     if (!(other is Fragment$MediaListItem$coverImage) ||
         runtimeType != other.runtimeType) return false;
-    final l$extraLarge = extraLarge;
-    final lOther$extraLarge = other.extraLarge;
-    if (l$extraLarge != lOther$extraLarge) return false;
+    final l$large = large;
+    final lOther$large = other.large;
+    if (l$large != lOther$large) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -591,8 +589,8 @@ class Fragment$MediaListItem$coverImage {
 extension UtilityExtension$Fragment$MediaListItem$coverImage
     on Fragment$MediaListItem$coverImage {
   Fragment$MediaListItem$coverImage copyWith(
-          {String? Function()? extraLarge, String? $__typename}) =>
+          {String? Function()? large, String? $__typename}) =>
       Fragment$MediaListItem$coverImage(
-          extraLarge: extraLarge == null ? this.extraLarge : extraLarge(),
+          large: large == null ? this.large : large(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }

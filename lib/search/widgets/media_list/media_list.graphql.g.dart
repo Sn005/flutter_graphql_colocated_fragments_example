@@ -87,14 +87,14 @@ Map<String, dynamic> _$Fragment$MediaList$media$titleToJson(
 Fragment$MediaList$media$coverImage
     _$Fragment$MediaList$media$coverImageFromJson(Map<String, dynamic> json) =>
         Fragment$MediaList$media$coverImage(
-          extraLarge: json['extraLarge'] as String?,
+          large: json['large'] as String?,
           $__typename: json['__typename'] as String,
         );
 
 Map<String, dynamic> _$Fragment$MediaList$media$coverImageToJson(
         Fragment$MediaList$media$coverImage instance) =>
     <String, dynamic>{
-      'extraLarge': instance.extraLarge,
+      'large': instance.large,
       '__typename': instance.$__typename,
     };
 
@@ -140,13 +140,13 @@ Map<String, dynamic> _$Fragment$MediaListItem$titleToJson(
 Fragment$MediaListItem$coverImage _$Fragment$MediaListItem$coverImageFromJson(
         Map<String, dynamic> json) =>
     Fragment$MediaListItem$coverImage(
-      extraLarge: json['extraLarge'] as String?,
+      large: json['large'] as String?,
       $__typename: json['__typename'] as String,
     );
 
 Map<String, dynamic> _$Fragment$MediaListItem$coverImageToJson(
         Fragment$MediaListItem$coverImage instance) =>
     <String, dynamic>{
-      'extraLarge': instance.extraLarge,
+      'large': instance.large,
       '__typename': instance.$__typename,
     };

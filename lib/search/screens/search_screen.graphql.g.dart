@@ -106,13 +106,13 @@ Query$SearchScreen$Page$media$coverImage
     _$Query$SearchScreen$Page$media$coverImageFromJson(
             Map<String, dynamic> json) =>
         Query$SearchScreen$Page$media$coverImage(
-          extraLarge: json['extraLarge'] as String?,
+          large: json['large'] as String?,
           $__typename: json['__typename'] as String,
         );
 
 Map<String, dynamic> _$Query$SearchScreen$Page$media$coverImageToJson(
         Query$SearchScreen$Page$media$coverImage instance) =>
     <String, dynamic>{
-      'extraLarge': instance.extraLarge,
+      'large': instance.large,
       '__typename': instance.$__typename,
     };

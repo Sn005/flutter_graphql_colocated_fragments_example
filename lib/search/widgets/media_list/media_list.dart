@@ -50,7 +50,7 @@ class MediaListItem extends StatelessWidget {
         child: Row(
           children: [
             Image.network(
-              media.coverImage!.extraLarge!,
+              media.coverImage!.large!,
               fit: BoxFit.cover,
               width: 100,
               height: 100,
