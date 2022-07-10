@@ -70,6 +70,8 @@ Query$SearchScreen$Page$media _$Query$SearchScreen$Page$mediaFromJson(
           ? null
           : Query$SearchScreen$Page$media$title.fromJson(
               json['title'] as Map<String, dynamic>),
+      genres:
+          (json['genres'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       coverImage: json['coverImage'] == null
           ? null
           : Query$SearchScreen$Page$media$coverImage.fromJson(
@@ -81,6 +83,7 @@ Map<String, dynamic> _$Query$SearchScreen$Page$mediaToJson(
         Query$SearchScreen$Page$media instance) =>
     <String, dynamic>{
       'title': instance.title?.toJson(),
+      'genres': instance.genres,
       'coverImage': instance.coverImage?.toJson(),
       '__typename': instance.$__typename,
     };

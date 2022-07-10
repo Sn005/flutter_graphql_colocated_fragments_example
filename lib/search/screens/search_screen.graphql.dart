@@ -313,13 +313,15 @@ extension UtilityExtension$Query$SearchScreen$Page on Query$SearchScreen$Page {
 class Query$SearchScreen$Page$media
     implements Fragment$MediaList$media, Fragment$MediaListItem {
   Query$SearchScreen$Page$media(
-      {this.title, this.coverImage, required this.$__typename});
+      {this.title, this.genres, this.coverImage, required this.$__typename});
 
   @override
   factory Query$SearchScreen$Page$media.fromJson(Map<String, dynamic> json) =>
       _$Query$SearchScreen$Page$mediaFromJson(json);
 
   final Query$SearchScreen$Page$media$title? title;
+
+  final List<String?>? genres;
 
   final Query$SearchScreen$Page$media$coverImage? coverImage;
 
@@ -329,9 +331,15 @@ class Query$SearchScreen$Page$media
   Map<String, dynamic> toJson() => _$Query$SearchScreen$Page$mediaToJson(this);
   int get hashCode {
     final l$title = title;
+    final l$genres = genres;
     final l$coverImage = coverImage;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$title, l$coverImage, l$$__typename]);
+    return Object.hashAll([
+      l$title,
+      l$genres == null ? null : Object.hashAll(l$genres.map((v) => v)),
+      l$coverImage,
+      l$$__typename
+    ]);
   }
 
   @override
@@ -342,6 +350,19 @@ class Query$SearchScreen$Page$media
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
+    final l$genres = genres;
+    final lOther$genres = other.genres;
+    if (l$genres != null && lOther$genres != null) {
+      if (l$genres.length != lOther$genres.length) return false;
+      for (int i = 0; i < l$genres.length; i++) {
+        final l$genres$entry = l$genres[i];
+        final lOther$genres$entry = lOther$genres[i];
+        if (l$genres$entry != lOther$genres$entry) return false;
+      }
+    } else if (l$genres != lOther$genres) {
+      return false;
+    }
+
     final l$coverImage = coverImage;
     final lOther$coverImage = other.coverImage;
     if (l$coverImage != lOther$coverImage) return false;
@@ -356,10 +377,12 @@ extension UtilityExtension$Query$SearchScreen$Page$media
     on Query$SearchScreen$Page$media {
   Query$SearchScreen$Page$media copyWith(
           {Query$SearchScreen$Page$media$title? Function()? title,
+          List<String?>? Function()? genres,
           Query$SearchScreen$Page$media$coverImage? Function()? coverImage,
           String? $__typename}) =>
       Query$SearchScreen$Page$media(
           title: title == null ? this.title : title(),
+          genres: genres == null ? this.genres : genres(),
           coverImage: coverImage == null ? this.coverImage : coverImage(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }

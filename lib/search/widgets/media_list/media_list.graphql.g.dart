@@ -52,6 +52,8 @@ Fragment$MediaList$media _$Fragment$MediaList$mediaFromJson(
           ? null
           : Fragment$MediaList$media$title.fromJson(
               json['title'] as Map<String, dynamic>),
+      genres:
+          (json['genres'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       coverImage: json['coverImage'] == null
           ? null
           : Fragment$MediaList$media$coverImage.fromJson(
@@ -63,6 +65,7 @@ Map<String, dynamic> _$Fragment$MediaList$mediaToJson(
         Fragment$MediaList$media instance) =>
     <String, dynamic>{
       'title': instance.title?.toJson(),
+      'genres': instance.genres,
       'coverImage': instance.coverImage?.toJson(),
       '__typename': instance.$__typename,
     };
@@ -102,6 +105,8 @@ Fragment$MediaListItem _$Fragment$MediaListItemFromJson(
           ? null
           : Fragment$MediaListItem$title.fromJson(
               json['title'] as Map<String, dynamic>),
+      genres:
+          (json['genres'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       coverImage: json['coverImage'] == null
           ? null
           : Fragment$MediaListItem$coverImage.fromJson(
@@ -113,6 +118,7 @@ Map<String, dynamic> _$Fragment$MediaListItemToJson(
         Fragment$MediaListItem instance) =>
     <String, dynamic>{
       'title': instance.title?.toJson(),
+      'genres': instance.genres,
       'coverImage': instance.coverImage?.toJson(),
       '__typename': instance.$__typename,
     };

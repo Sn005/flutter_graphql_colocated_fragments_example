@@ -177,13 +177,15 @@ extension ClientExtension$Fragment$MediaList on graphql.GraphQLClient {
 @JsonSerializable(explicitToJson: true)
 class Fragment$MediaList$media implements Fragment$MediaListItem {
   Fragment$MediaList$media(
-      {this.title, this.coverImage, required this.$__typename});
+      {this.title, this.genres, this.coverImage, required this.$__typename});
 
   @override
   factory Fragment$MediaList$media.fromJson(Map<String, dynamic> json) =>
       _$Fragment$MediaList$mediaFromJson(json);
 
   final Fragment$MediaList$media$title? title;
+
+  final List<String?>? genres;
 
   final Fragment$MediaList$media$coverImage? coverImage;
 
@@ -193,9 +195,15 @@ class Fragment$MediaList$media implements Fragment$MediaListItem {
   Map<String, dynamic> toJson() => _$Fragment$MediaList$mediaToJson(this);
   int get hashCode {
     final l$title = title;
+    final l$genres = genres;
     final l$coverImage = coverImage;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$title, l$coverImage, l$$__typename]);
+    return Object.hashAll([
+      l$title,
+      l$genres == null ? null : Object.hashAll(l$genres.map((v) => v)),
+      l$coverImage,
+      l$$__typename
+    ]);
   }
 
   @override
@@ -206,6 +214,19 @@ class Fragment$MediaList$media implements Fragment$MediaListItem {
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
+    final l$genres = genres;
+    final lOther$genres = other.genres;
+    if (l$genres != null && lOther$genres != null) {
+      if (l$genres.length != lOther$genres.length) return false;
+      for (int i = 0; i < l$genres.length; i++) {
+        final l$genres$entry = l$genres[i];
+        final lOther$genres$entry = lOther$genres[i];
+        if (l$genres$entry != lOther$genres$entry) return false;
+      }
+    } else if (l$genres != lOther$genres) {
+      return false;
+    }
+
     final l$coverImage = coverImage;
     final lOther$coverImage = other.coverImage;
     if (l$coverImage != lOther$coverImage) return false;
@@ -220,10 +241,12 @@ extension UtilityExtension$Fragment$MediaList$media
     on Fragment$MediaList$media {
   Fragment$MediaList$media copyWith(
           {Fragment$MediaList$media$title? Function()? title,
+          List<String?>? Function()? genres,
           Fragment$MediaList$media$coverImage? Function()? coverImage,
           String? $__typename}) =>
       Fragment$MediaList$media(
           title: title == null ? this.title : title(),
+          genres: genres == null ? this.genres : genres(),
           coverImage: coverImage == null ? this.coverImage : coverImage(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
@@ -323,13 +346,15 @@ extension UtilityExtension$Fragment$MediaList$media$coverImage
 @JsonSerializable(explicitToJson: true)
 class Fragment$MediaListItem {
   Fragment$MediaListItem(
-      {this.title, this.coverImage, required this.$__typename});
+      {this.title, this.genres, this.coverImage, required this.$__typename});
 
   @override
   factory Fragment$MediaListItem.fromJson(Map<String, dynamic> json) =>
       _$Fragment$MediaListItemFromJson(json);
 
   final Fragment$MediaListItem$title? title;
+
+  final List<String?>? genres;
 
   final Fragment$MediaListItem$coverImage? coverImage;
 
@@ -339,9 +364,15 @@ class Fragment$MediaListItem {
   Map<String, dynamic> toJson() => _$Fragment$MediaListItemToJson(this);
   int get hashCode {
     final l$title = title;
+    final l$genres = genres;
     final l$coverImage = coverImage;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$title, l$coverImage, l$$__typename]);
+    return Object.hashAll([
+      l$title,
+      l$genres == null ? null : Object.hashAll(l$genres.map((v) => v)),
+      l$coverImage,
+      l$$__typename
+    ]);
   }
 
   @override
@@ -352,6 +383,19 @@ class Fragment$MediaListItem {
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
+    final l$genres = genres;
+    final lOther$genres = other.genres;
+    if (l$genres != null && lOther$genres != null) {
+      if (l$genres.length != lOther$genres.length) return false;
+      for (int i = 0; i < l$genres.length; i++) {
+        final l$genres$entry = l$genres[i];
+        final lOther$genres$entry = lOther$genres[i];
+        if (l$genres$entry != lOther$genres$entry) return false;
+      }
+    } else if (l$genres != lOther$genres) {
+      return false;
+    }
+
     final l$coverImage = coverImage;
     final lOther$coverImage = other.coverImage;
     if (l$coverImage != lOther$coverImage) return false;
@@ -365,10 +409,12 @@ class Fragment$MediaListItem {
 extension UtilityExtension$Fragment$MediaListItem on Fragment$MediaListItem {
   Fragment$MediaListItem copyWith(
           {Fragment$MediaListItem$title? Function()? title,
+          List<String?>? Function()? genres,
           Fragment$MediaListItem$coverImage? Function()? coverImage,
           String? $__typename}) =>
       Fragment$MediaListItem(
           title: title == null ? this.title : title(),
+          genres: genres == null ? this.genres : genres(),
           coverImage: coverImage == null ? this.coverImage : coverImage(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }
@@ -398,6 +444,12 @@ const fragmentDefinitionMediaListItem = FragmentDefinitionNode(
                 directives: [],
                 selectionSet: null)
           ])),
+      FieldNode(
+          name: NameNode(value: 'genres'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
       FieldNode(
           name: NameNode(value: 'coverImage'),
           alias: null,
